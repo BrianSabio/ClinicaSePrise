@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SePrise.API/SePrise.API.csproj" />
+    <Project Path="src/SePrise.Application/SePrise.Application.csproj" />
+    <Project Path="src/SePrise.Domain/SePrise.Domain.csproj" />
+    <Project Path="src/SePrise.Infrastructure/SePrise.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SePrise.Tests/SePrise.Tests.csproj" />
+  </Folder>
+</Solution>
