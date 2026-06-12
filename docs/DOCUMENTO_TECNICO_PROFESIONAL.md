@@ -376,5 +376,3 @@ Recepcionista → API
 
 ## 21. CONCLUSIÓN Y REFERENCIAS
 SePrise es un excelente ejemplo de software diseñado para durar. Combina patrones estructurales pesados con código C# moderno y limpio, garantizando su capacidad de evolución a futuro.
-
-*Generado por Antigravity / Gemini.*
