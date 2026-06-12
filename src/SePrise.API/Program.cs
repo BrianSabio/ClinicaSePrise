@@ -14,47 +14,26 @@ using SePrise.Application.Validators.Turno;
 using SePrise.Application.Validators.Atencion;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// ==========================================
 // 1. SERVICIOS DE APLICACIÓN (Application Layer)
-// ==========================================
 builder.Services.AddScoped<IPacienteService, PacienteService>();
 builder.Services.AddScoped<IAgendamientoService, AgendamientoService>();
 builder.Services.AddScoped<IAcreditacionService, AcreditacionService>();
 builder.Services.AddScoped<IAtencionService, AtencionService>();
 builder.Services.AddScoped<IReportesService, ReportesService>();
-
-// ==========================================
 // 2. REPOSITORIOS E INFRAESTRUCTURA
-// ==========================================
 builder.Services.AddInfrastructureServices(builder.Configuration);
-
-// ==========================================
 // 4. AUTOMAPPER (Mapping)
-// ==========================================
 builder.Services.AddAutoMapper(cfg => {
     cfg.AddMaps(typeof(Program).Assembly);
 });
-
-// ==========================================
 // 5. FLUENTVALIDATION (Validación)
-// ==========================================
 builder.Services.AddApplicationValidators();
-
-// ==========================================
 // 6. CONTROLADORES
-// ==========================================
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-
-// ==========================================
 // 7. SWAGGER (Documentación API - Opcional)
-// ==========================================
 builder.Services.AddSwaggerGen();
-
-// ==========================================
 // 8. CORS (Si es necesario para frontend)
-// ==========================================
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -64,15 +43,9 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader();
     });
 });
-
-// ==========================================
 // CONSTRUIR APP
-// ==========================================
 var app = builder.Build();
-
-// ==========================================
 // MIDDLEWARE PIPELINE
-// ==========================================
 
 // 1. EXCEPTION HANDLING (debe ir antes de routing)
 app.UseMiddleware<ExceptionHandlingMiddleware>();
@@ -98,16 +71,29 @@ app.UseAuthorization();
 
 // 6. ROUTING + CONTROLLERS
 app.MapControllers();
-
-// ==========================================
 // SEEDING (Datos de Prueba Básicos)
-// ==========================================
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<SePriseDbContext>();
     
     // Asegurar que la BD existe
     context.Database.EnsureCreated();
+
+    // Crear Paciente Admin (DNI 12345678) si no existe para facilitar primer login
+    if (!context.Pacientes.Any(p => p.Dni.Numero == "12345678"))
+    {
+        var admin = SePrise.Domain.Entities.Paciente.Crear(
+            SePrise.Domain.ValueObjects.Dni.Crear("12345678"),
+            "Admin",
+            "SePrise",
+            new DateTime(1990, 1, 1),
+            'O',
+            "admin@seprise.com",
+            "555-0000"
+        );
+        context.Pacientes.Add(admin);
+        context.SaveChanges();
+    }
 
     // Crear Especialidades si no hay
     if (!context.Especialidades.Any())
@@ -166,11 +152,10 @@ using (var scope = app.Services.CreateScope())
         context.SaveChanges();
     }
 }
-
-// ==========================================
 // RUN
-// ==========================================
 app.Run();
 
 // Requerido para WebApplicationFactory en el proyecto de pruebas
 public partial class Program { }
+
+
