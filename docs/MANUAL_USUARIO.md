@@ -315,3 +315,4 @@ Si la aplicación se cierra inesperadamente:
 **Manual de Usuario — SePrise Circuito A v1.0**  
 **Última actualización**: Junio 2026  
 **Versión**: 1.0.0 Production Ready
+

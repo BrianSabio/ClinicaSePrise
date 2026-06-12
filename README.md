@@ -136,7 +136,7 @@ cd src/SePrise.WinForms
 dotnet run
 ```
 
-Se abrirá el **LoginForm**. Ingresa cualquier DNI válido registrado en el sistema.
+Se abrirá el **LoginForm**. Ingresa el DNI **12345678** (este es un "bypass" programado exclusivamente para pruebas que te permite ingresar al sistema como Administrador sin necesidad de configurar pacientes previamente en la base de datos).
 
 ### Flujo de Ejemplo Rápido
 

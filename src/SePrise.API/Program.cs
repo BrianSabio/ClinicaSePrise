@@ -79,22 +79,6 @@ using (var scope = app.Services.CreateScope())
     // Asegurar que la BD existe
     context.Database.EnsureCreated();
 
-    // Crear Paciente Admin (DNI 12345678) si no existe para facilitar primer login
-    if (!context.Pacientes.Any(p => p.Dni.Numero == "12345678"))
-    {
-        var admin = SePrise.Domain.Entities.Paciente.Crear(
-            SePrise.Domain.ValueObjects.Dni.Crear("12345678"),
-            "Admin",
-            "SePrise",
-            new DateTime(1990, 1, 1),
-            'O',
-            "admin@seprise.com",
-            "555-0000"
-        );
-        context.Pacientes.Add(admin);
-        context.SaveChanges();
-    }
-
     // Crear Especialidades si no hay
     if (!context.Especialidades.Any())
     {
