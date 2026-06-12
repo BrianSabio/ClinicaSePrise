@@ -545,11 +545,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj",
+      "projectUniqueName": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj",
       "projectName": "SePrise.Application",
-      "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj",
+      "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj",
       "packagesPath": "C:\\Users\\BSUb2\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Application\\obj\\",
+      "outputPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -572,8 +572,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
-              "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj"
+            "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
+              "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj"
             }
           }
         }
@@ -624,7 +624,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300-preview.0.26177.108/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",

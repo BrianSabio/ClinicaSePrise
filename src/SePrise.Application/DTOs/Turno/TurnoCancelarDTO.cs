@@ -1,9 +1,11 @@
 namespace SePrise.Application.DTOs.Turno;
 
 /// <summary>
-/// DTO para la cancelación de un turno activo.
+/// DTO para cancelar un turno.
+/// Utilizado para transicionar un turno a Cancelado.
 /// </summary>
 public class TurnoCancelarDTO
 {
-    // Propiedades se agregarán en Microtarea 3.1
+    // Vacío o mínimo, utilizado por el endpoint PATCH correspondiente.
+    // Podría ampliarse en el futuro para incluir, por ejemplo, "MotivoCancelacion".
 }

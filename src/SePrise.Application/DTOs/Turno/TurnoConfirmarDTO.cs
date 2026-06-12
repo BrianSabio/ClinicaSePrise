@@ -1,9 +1,10 @@
 namespace SePrise.Application.DTOs.Turno;
 
 /// <summary>
-/// DTO para la confirmación (acreditación) de un turno reservado.
+/// DTO para la confirmación de un turno (acreditación del paciente).
+/// Utilizado para transicionar un turno de Reservado a Confirmado.
 /// </summary>
 public class TurnoConfirmarDTO
 {
-    // Propiedades se agregarán en Microtarea 3.1
+    public int IdTurno { get; set; }
 }

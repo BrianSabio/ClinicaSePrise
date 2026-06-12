@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kP/Q9C+Vz3s=",
+  "dgSpecHash": "zimYL+4R6Uc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj",
+  "projectFilePath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BSUb2\\.nuget\\packages\\automapper\\16.1.1\\automapper.16.1.1.nupkg.sha512",
     "C:\\Users\\BSUb2\\.nuget\\packages\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",

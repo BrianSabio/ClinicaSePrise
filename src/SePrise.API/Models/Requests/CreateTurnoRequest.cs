@@ -1,9 +1,13 @@
 namespace SePrise.API.Models.Requests;
 
-/// <summary>
-/// Modelo de solicitud HTTP para el agendamiento de un nuevo turno.
-/// </summary>
+using System;
+
 public class CreateTurnoRequest
 {
-    // Propiedades se agregarán en Microtarea 4.2
+    public int IdPaciente { get; set; }
+    public int IdMedico { get; set; }
+    public int IdEspecialidad { get; set; }
+    public int IdSala { get; set; }
+    public DateTime FechaHoraInicio { get; set; }
+    public int DuracionMinutos { get; set; }
 }

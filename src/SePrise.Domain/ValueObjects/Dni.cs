@@ -25,8 +25,18 @@ public sealed class Dni
     public string Valor { get; }
 
     /// <summary>
-    /// Constructor privado reservado para uso interno y para Entity Framework Core.
-    /// Usa el factory method <see cref="Crear"/> para instanciar desde código de aplicación.
+    /// Constructor privado sin parámetros requerido por Entity Framework Core
+    /// para la materialización del Value Object desde la base de datos.
+    /// No usar directamente desde código de aplicación — usar <see cref="Crear"/>.
+    /// </summary>
+    private Dni()
+    {
+        // EF Core pobla la propiedad Valor mediante reflexión después de instanciar
+        Valor = string.Empty;
+    }
+
+    /// <summary>
+    /// Constructor privado reservado para uso interno del factory method.
     /// </summary>
     /// <param name="valor">El valor ya validado del DNI.</param>
     private Dni(string valor)

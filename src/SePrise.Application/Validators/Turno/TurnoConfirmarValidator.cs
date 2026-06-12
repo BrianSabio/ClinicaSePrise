@@ -1,12 +1,16 @@
+namespace SePrise.Application.Validators.Turno;
+
 using FluentValidation;
 using SePrise.Application.DTOs.Turno;
 
-namespace SePrise.Application.Validators.Turno;
-
 /// <summary>
-/// Validador FluentValidation para la confirmación de un turno reservado.
+/// Validador para confirmar un turno.
 /// </summary>
 public class TurnoConfirmarValidator : AbstractValidator<TurnoConfirmarDTO>
 {
-    // Reglas de validación se agregarán en Microtarea 3.4
+    public TurnoConfirmarValidator()
+    {
+        RuleFor(t => t.IdTurno)
+            .GreaterThan(0).WithMessage("IdTurno debe ser mayor a 0");
+    }
 }

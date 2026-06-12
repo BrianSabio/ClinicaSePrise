@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\tests\\SePrise.Tests\\SePrise.Tests.csproj": {}
+    "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\tests\\SePrise.Tests\\SePrise.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.API\\SePrise.API.csproj": {
+    "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.API\\SePrise.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.API\\SePrise.API.csproj",
+        "projectUniqueName": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.API\\SePrise.API.csproj",
         "projectName": "SePrise.API",
-        "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.API\\SePrise.API.csproj",
+        "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.API\\SePrise.API.csproj",
         "packagesPath": "C:\\Users\\BSUb2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.API\\obj\\",
+        "outputPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -34,14 +34,14 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj": {
-                "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj"
+              "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj": {
+                "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj"
               },
-              "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
-                "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj"
+              "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
+                "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj"
               },
-              "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Infrastructure\\SePrise.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Infrastructure\\SePrise.Infrastructure.csproj"
+              "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Infrastructure\\SePrise.Infrastructure.csproj": {
+                "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Infrastructure\\SePrise.Infrastructure.csproj"
               }
             }
           }
@@ -66,6 +66,16 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[10.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[10.0.9, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[10.2.1, )"
             }
           },
           "imports": [
@@ -87,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300-preview.0.26177.108/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
@@ -505,14 +515,14 @@
         }
       }
     },
-    "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj": {
+    "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj",
+        "projectUniqueName": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj",
         "projectName": "SePrise.Application",
-        "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj",
+        "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj",
         "packagesPath": "C:\\Users\\BSUb2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Application\\obj\\",
+        "outputPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -535,8 +545,8 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
-                "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj"
+              "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
+                "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj"
               }
             }
           }
@@ -587,7 +597,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300-preview.0.26177.108/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -865,14 +875,14 @@
         }
       }
     },
-    "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
+    "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj",
+        "projectUniqueName": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj",
         "projectName": "SePrise.Domain",
-        "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj",
+        "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj",
         "packagesPath": "C:\\Users\\BSUb2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Domain\\obj\\",
+        "outputPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -929,7 +939,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300-preview.0.26177.108/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1207,14 +1217,14 @@
         }
       }
     },
-    "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Infrastructure\\SePrise.Infrastructure.csproj": {
+    "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Infrastructure\\SePrise.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Infrastructure\\SePrise.Infrastructure.csproj",
+        "projectUniqueName": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Infrastructure\\SePrise.Infrastructure.csproj",
         "projectName": "SePrise.Infrastructure",
-        "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Infrastructure\\SePrise.Infrastructure.csproj",
+        "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Infrastructure\\SePrise.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\BSUb2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Infrastructure\\obj\\",
+        "outputPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1237,11 +1247,11 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj": {
-                "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj"
+              "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj": {
+                "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj"
               },
-              "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
-                "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj"
+              "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
+                "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj"
               }
             }
           }
@@ -1294,7 +1304,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300-preview.0.26177.108/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1572,14 +1582,14 @@
         }
       }
     },
-    "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\tests\\SePrise.Tests\\SePrise.Tests.csproj": {
+    "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\tests\\SePrise.Tests\\SePrise.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\tests\\SePrise.Tests\\SePrise.Tests.csproj",
+        "projectUniqueName": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\tests\\SePrise.Tests\\SePrise.Tests.csproj",
         "projectName": "SePrise.Tests",
-        "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\tests\\SePrise.Tests\\SePrise.Tests.csproj",
+        "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\tests\\SePrise.Tests\\SePrise.Tests.csproj",
         "packagesPath": "C:\\Users\\BSUb2\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\tests\\SePrise.Tests\\obj\\",
+        "outputPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\tests\\SePrise.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1602,17 +1612,17 @@
             "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.API\\SePrise.API.csproj": {
-                "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.API\\SePrise.API.csproj"
+              "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.API\\SePrise.API.csproj": {
+                "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.API\\SePrise.API.csproj"
               },
-              "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj": {
-                "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj"
+              "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj": {
+                "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj"
               },
-              "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
-                "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj"
+              "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
+                "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj"
               },
-              "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Infrastructure\\SePrise.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\ClinicaSePrise\\SePrise\\src\\SePrise.Infrastructure\\SePrise.Infrastructure.csproj"
+              "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Infrastructure\\SePrise.Infrastructure.csproj": {
+                "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Infrastructure\\SePrise.Infrastructure.csproj"
               }
             }
           }
@@ -1634,23 +1644,47 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
+            "Bogus": {
+              "target": "Package",
+              "version": "[35.5.1, )"
+            },
+            "FluentAssertions": {
+              "target": "Package",
+              "version": "[6.12.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Testing": {
+              "target": "Package",
+              "version": "[10.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[10.0.9, )"
+            },
             "Microsoft.NET.Test.Sdk": {
               "target": "Package",
-              "version": "[17.8.2, )"
+              "version": "[17.8.0, )"
             },
-            "Moq": {
+            "coverlet.collector": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[4.20.70, )"
+              "version": "[6.0.2, )"
+            },
+            "coverlet.msbuild": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.2, )"
             },
             "xunit": {
               "target": "Package",
-              "version": "[2.6.6, )"
+              "version": "[2.9.0, )"
             },
             "xunit.runner.visualstudio": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[2.5.4, )"
+              "version": "[2.5.0, )"
             }
           },
           "imports": [
@@ -1669,7 +1703,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300-preview.0.26177.108/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

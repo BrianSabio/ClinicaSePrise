@@ -1,9 +1,18 @@
 namespace SePrise.Application.Services.Interfaces;
 
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using SePrise.Application.DTOs.Paciente;
+
 /// <summary>
-/// Contrato del servicio CRUD para la gestión de pacientes en el sistema.
+/// Interfaz para el servicio de aplicación de gestión de pacientes.
 /// </summary>
 public interface IPacienteService
 {
-    // Métodos se agregarán en Microtarea 3.3
+    Task<PacienteDTO> CrearPacienteAsync(PacienteCrearDTO dto);
+    Task<PacienteDTO> ObtenerPacienteAsync(int idPaciente);
+    Task<PacienteDTO> ObtenerPacientePorDNIAsync(string dni);
+    Task<IEnumerable<PacienteDTO>> ListarPacientesActivosAsync();
+    Task<PacienteDTO> ActualizarPacienteAsync(int idPaciente, PacienteActualizarDTO dto);
+    Task DesactivarPacienteAsync(int idPaciente);
 }

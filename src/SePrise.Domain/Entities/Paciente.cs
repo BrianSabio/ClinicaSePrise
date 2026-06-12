@@ -43,9 +43,9 @@ public class Paciente : Entity
 
     /// <summary>
     /// Dirección de correo electrónico del paciente.
-    /// Opcional. Longitud máxima: 100 caracteres.
+    /// Obligatorio. Longitud máxima: 100 caracteres.
     /// </summary>
-    public string? Email { get; private set; }
+    public string Email { get; private set; } = string.Empty;
 
     /// <summary>
     /// Número de teléfono de contacto del paciente.
@@ -109,7 +109,7 @@ public class Paciente : Entity
     /// <param name="genero">
     /// Género del paciente. Solo se acepta 'M', 'F' u 'O'.
     /// </param>
-    /// <param name="email">Email opcional. Máximo 100 caracteres.</param>
+    /// <param name="email">Email obligatorio. Máximo 100 caracteres.</param>
     /// <param name="telefono">Teléfono opcional. Máximo 20 caracteres.</param>
     /// <param name="direccion">Dirección opcional. Máximo 200 caracteres.</param>
     /// <param name="ciudad">Ciudad opcional. Máximo 50 caracteres.</param>
@@ -129,7 +129,7 @@ public class Paciente : Entity
         string apellido,
         DateTime fechaNacimiento,
         char genero,
-        string? email = null,
+        string email,
         string? telefono = null,
         string? direccion = null,
         string? ciudad = null,
@@ -177,8 +177,13 @@ public class Paciente : Entity
                 $"El género '{genero}' no es válido. Solo se aceptan: 'M' (Masculino), 'F' (Femenino), 'O' (Otro).",
                 nameof(genero));
 
-        // Validar longitudes de campos opcionales de texto
-        if (email is not null && email.Length > 100)
+        // Validar email
+        if (string.IsNullOrWhiteSpace(email))
+            throw new ArgumentException(
+                "El email del paciente no puede ser nulo ni estar vacío.",
+                nameof(email));
+
+        if (email.Length > 100)
             throw new ArgumentException(
                 $"El email no puede exceder 100 caracteres. " +
                 $"Se recibieron {email.Length} caracteres.", nameof(email));
@@ -227,6 +232,93 @@ public class Paciente : Entity
             FechaCreacion = ahora,
             FechaUltimaModificacion = ahora
         };
+    }
+
+    /// <summary>
+    /// Actualiza los datos de contacto y personales permitidos.
+    /// Actualiza automáticamente <see cref="Entity.FechaUltimaModificacion"/>.
+    /// </summary>
+    public void ActualizarDatos(
+        string? dniStr,
+        DateTime? fechaNacimiento,
+        char? genero,
+        string? nombre,
+        string? apellido,
+        string? email,
+        string? telefono,
+        string? direccion,
+        string? ciudad,
+        string? provincia,
+        string? codigoPostal)
+    {
+        if (!string.IsNullOrWhiteSpace(dniStr))
+        {
+            DNI = Dni.Crear(dniStr);
+        }
+
+        if (fechaNacimiento.HasValue)
+        {
+            if (fechaNacimiento.Value.Date >= DateTime.UtcNow.Date)
+                throw new ArgumentException("La fecha de nacimiento debe ser anterior a la actual", nameof(fechaNacimiento));
+            FechaNacimiento = fechaNacimiento.Value.Date;
+        }
+
+        if (genero.HasValue)
+        {
+            char generoNormalizado = char.ToUpper(genero.Value);
+            if (generoNormalizado != 'M' && generoNormalizado != 'F' && generoNormalizado != 'O')
+                throw new ArgumentException("El género no es válido", nameof(genero));
+            Genero = generoNormalizado;
+        }
+        if (!string.IsNullOrWhiteSpace(nombre))
+        {
+            if (nombre.Trim().Length > 100) throw new ArgumentException("Nombre excede 100 caracteres", nameof(nombre));
+            Nombre = nombre.Trim();
+        }
+
+        if (!string.IsNullOrWhiteSpace(apellido))
+        {
+            if (apellido.Trim().Length > 100) throw new ArgumentException("Apellido excede 100 caracteres", nameof(apellido));
+            Apellido = apellido.Trim();
+        }
+
+        if (email != null)
+        {
+            if (email.Length > 100) throw new ArgumentException("Email excede 100 caracteres", nameof(email));
+            Email = email;
+        }
+
+        if (telefono != null)
+        {
+            if (telefono.Length > 20) throw new ArgumentException("Teléfono excede 20 caracteres", nameof(telefono));
+            Telefono = telefono;
+        }
+
+        if (direccion != null)
+        {
+            if (direccion.Length > 200) throw new ArgumentException("Dirección excede 200 caracteres", nameof(direccion));
+            Direccion = direccion;
+        }
+
+        if (ciudad != null)
+        {
+            if (ciudad.Length > 50) throw new ArgumentException("Ciudad excede 50 caracteres", nameof(ciudad));
+            Ciudad = ciudad;
+        }
+
+        if (provincia != null)
+        {
+            if (provincia.Length > 50) throw new ArgumentException("Provincia excede 50 caracteres", nameof(provincia));
+            Provincia = provincia;
+        }
+
+        if (codigoPostal != null)
+        {
+            if (codigoPostal.Length > 10) throw new ArgumentException("Código postal excede 10 caracteres", nameof(codigoPostal));
+            CodigoPostal = codigoPostal;
+        }
+
+        ActualizarFechaModificacion();
     }
 
     /// <summary>

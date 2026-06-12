@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SePrise.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+084fc59bf658524bca8d371d58e78927d38a41b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("SePrise.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SePrise.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
