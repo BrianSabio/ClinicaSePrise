@@ -3,11 +3,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SePrise.Domain.Entities;
 
 namespace SePrise.Infrastructure.Persistence.Configurations;
-
-/// <summary>
-/// Configuración de Entity Framework Core para la entidad <see cref="Sala"/>.
-/// Define tabla, columnas, índice único de número de sala y conversión del enum <see cref="TipoSala"/>.
-/// </summary>
 public class SalaConfiguration : IEntityTypeConfiguration<Sala>
 {
     public void Configure(EntityTypeBuilder<Sala> builder)
@@ -51,3 +46,5 @@ public class SalaConfiguration : IEntityTypeConfiguration<Sala>
             .ValueGeneratedOnAddOrUpdate();
     }
 }
+
+

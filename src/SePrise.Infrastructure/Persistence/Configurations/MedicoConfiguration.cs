@@ -3,11 +3,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SePrise.Domain.Entities;
 
 namespace SePrise.Infrastructure.Persistence.Configurations;
-
-/// <summary>
-/// Configuración de Entity Framework Core para la entidad <see cref="Medico"/>.
-/// Define tabla, columnas, índice único de matrícula y restricciones.
-/// </summary>
 public class MedicoConfiguration : IEntityTypeConfiguration<Medico>
 {
     public void Configure(EntityTypeBuilder<Medico> builder)
@@ -66,3 +61,5 @@ public class MedicoConfiguration : IEntityTypeConfiguration<Medico>
             .ValueGeneratedOnAddOrUpdate();
     }
 }
+
+

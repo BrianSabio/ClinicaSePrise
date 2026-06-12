@@ -152,3 +152,5 @@ public class FinalizarAtencionRequest
 {
     public string Notas { get; set; } = string.Empty;
 }
+
+

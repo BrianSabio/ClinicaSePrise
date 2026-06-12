@@ -1,8 +1,4 @@
 namespace SePrise.WinForms.UX;
-
-/// <summary>
-/// Tipos de notificaciones disponibles en el sistema
-/// </summary>
 public enum NotificationType
 {
     Success,
@@ -10,47 +6,24 @@ public enum NotificationType
     Warning,
     Info
 }
-
-/// <summary>
-/// Gestor centralizado de notificaciones y mensajes al usuario
-/// </summary>
 public static class NotificationManager
 {
-    /// <summary>
-    /// Muestra una notificación de éxito
-    /// </summary>
     public static void ShowSuccess(string title, string message, Form? owner = null)
     {
         ShowNotification(title, message, NotificationType.Success, owner);
     }
-
-    /// <summary>
-    /// Muestra una notificación de error
-    /// </summary>
     public static void ShowError(string title, string message, Form? owner = null)
     {
         ShowNotification(title, message, NotificationType.Error, owner);
     }
-
-    /// <summary>
-    /// Muestra una notificación de advertencia
-    /// </summary>
     public static void ShowWarning(string title, string message, Form? owner = null)
     {
         ShowNotification(title, message, NotificationType.Warning, owner);
     }
-
-    /// <summary>
-    /// Muestra una notificación de información
-    /// </summary>
     public static void ShowInfo(string title, string message, Form? owner = null)
     {
         ShowNotification(title, message, NotificationType.Info, owner);
     }
-
-    /// <summary>
-    /// Muestra un mensaje de confirmación
-    /// </summary>
     public static DialogResult ShowConfirm(string title, string message, Form? owner = null)
     {
         var colors = ThemeManager.CurrentColorScheme;
@@ -80,18 +53,10 @@ public static class NotificationManager
         MessageBox.Show(message, title, MessageBoxButtons.OK, icon);
     }
 }
-
-/// <summary>
-/// Utilidades de validación con retroalimentación visual
-/// </summary>
 public static class ValidationHelper
 {
     private static readonly Dictionary<Control, Label> ErrorLabels = new();
     private static readonly Dictionary<Control, Color> OriginalColors = new();
-
-    /// <summary>
-    /// Valida un campo de texto y muestra retroalimentación visual
-    /// </summary>
     public static bool ValidateRequired(TextBox textBox, Label errorLabel, string fieldName)
     {
         if (string.IsNullOrWhiteSpace(textBox.Text))
@@ -103,10 +68,6 @@ public static class ValidationHelper
         ClearValidationError(textBox, errorLabel);
         return true;
     }
-
-    /// <summary>
-    /// Valida un email
-    /// </summary>
     public static bool ValidateEmail(TextBox textBox, Label errorLabel)
     {
         if (string.IsNullOrWhiteSpace(textBox.Text))
@@ -127,10 +88,6 @@ public static class ValidationHelper
             return false;
         }
     }
-
-    /// <summary>
-    /// Valida un DNI (formato básico)
-    /// </summary>
     public static bool ValidateDNI(TextBox textBox, Label errorLabel)
     {
         if (string.IsNullOrWhiteSpace(textBox.Text))
@@ -149,10 +106,6 @@ public static class ValidationHelper
         ClearValidationError(textBox, errorLabel);
         return true;
     }
-
-    /// <summary>
-    /// Valida un número
-    /// </summary>
     public static bool ValidateNumber(TextBox textBox, Label errorLabel, string fieldName)
     {
         if (string.IsNullOrWhiteSpace(textBox.Text))
@@ -170,10 +123,6 @@ public static class ValidationHelper
         ClearValidationError(textBox, errorLabel);
         return true;
     }
-
-    /// <summary>
-    /// Valida un rango de números
-    /// </summary>
     public static bool ValidateNumberRange(NumericUpDown control, Label errorLabel, decimal min, decimal max)
     {
         if (control.Value < min || control.Value > max)
@@ -185,10 +134,6 @@ public static class ValidationHelper
         ClearValidationError(control, errorLabel);
         return true;
     }
-
-    /// <summary>
-    /// Valida que un ComboBox tenga selección
-    /// </summary>
     public static bool ValidateSelection(ComboBox comboBox, Label errorLabel, string fieldName)
     {
         if (comboBox.SelectedIndex < 0)
@@ -200,10 +145,6 @@ public static class ValidationHelper
         ClearValidationError(comboBox, errorLabel);
         return true;
     }
-
-    /// <summary>
-    /// Muestra un error de validación en rojo
-    /// </summary>
     private static void ShowValidationError(Control control, Label errorLabel, string message)
     {
         var colors = ThemeManager.CurrentColorScheme;
@@ -220,10 +161,6 @@ public static class ValidationHelper
         errorLabel.ForeColor = colors.ErrorColor;
         errorLabel.Visible = true;
     }
-
-    /// <summary>
-    /// Limpia el error de validación
-    /// </summary>
     private static void ClearValidationError(Control control, Label errorLabel)
     {
         var colors = ThemeManager.CurrentColorScheme;
@@ -238,15 +175,8 @@ public static class ValidationHelper
         errorLabel.Visible = false;
     }
 }
-
-/// <summary>
-/// Extensiones útiles para controles
-/// </summary>
 public static class ControlExtensions
 {
-    /// <summary>
-    /// Deshabilita un control con retroalimentación visual
-    /// </summary>
     public static void DisableWithFeedback(this Control control)
     {
         var colors = ThemeManager.CurrentColorScheme;
@@ -254,10 +184,6 @@ public static class ControlExtensions
         control.BackColor = colors.DisabledColor;
         control.ForeColor = colors.TextDisabled;
     }
-
-    /// <summary>
-    /// Habilita un control con retroalimentación visual
-    /// </summary>
     public static void EnableWithFeedback(this Control control)
     {
         var colors = ThemeManager.CurrentColorScheme;
@@ -265,10 +191,6 @@ public static class ControlExtensions
         control.BackColor = colors.SurfaceColor;
         control.ForeColor = colors.TextPrimary;
     }
-
-    /// <summary>
-    /// Añade un tooltip a un control
-    /// </summary>
     public static void AddTooltip(this Control control, string tooltip)
     {
         var toolTip = new ToolTip();
@@ -277,10 +199,6 @@ public static class ControlExtensions
         toolTip.InitialDelay = 1000;
         toolTip.ReshowDelay = 500;
     }
-
-    /// <summary>
-    /// Muestra un indicador de carga/procesamiento
-    /// </summary>
     public static void ShowLoading(this Button button)
     {
         var originalText = button.Text;
@@ -288,10 +206,6 @@ public static class ControlExtensions
         button.Enabled = false;
         button.Tag = originalText;
     }
-
-    /// <summary>
-    /// Oculta el indicador de carga
-    /// </summary>
     public static void HideLoading(this Button button)
     {
         if (button.Tag is string originalText)
@@ -300,10 +214,6 @@ public static class ControlExtensions
             button.Enabled = true;
         }
     }
-
-    /// <summary>
-    /// Limpia todos los controles de entrada en un contenedor
-    /// </summary>
     public static void ClearAll(this Control container)
     {
         foreach (Control control in container.Controls)
@@ -333,12 +243,10 @@ public static class ControlExtensions
             }
         }
     }
-
-    /// <summary>
-    /// Aplica enfoque visual a un control
-    /// </summary>
     public static void ApplyFocus(this Control control)
     {
         control.Focus();
     }
 }
+
+

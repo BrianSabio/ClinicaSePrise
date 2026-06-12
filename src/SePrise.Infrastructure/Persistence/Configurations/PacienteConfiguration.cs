@@ -4,12 +4,6 @@ using SePrise.Domain.Entities;
 using SePrise.Domain.ValueObjects;
 
 namespace SePrise.Infrastructure.Persistence.Configurations;
-
-/// <summary>
-/// Configuración de Entity Framework Core para la entidad <see cref="Paciente"/>.
-/// Define tabla, columnas, restricciones y la conversión del Value Object <see cref="Dni"/>
-/// hacia y desde su representación primitiva (string) en la base de datos.
-/// </summary>
 public class PacienteConfiguration : IEntityTypeConfiguration<Paciente>
 {
     public void Configure(EntityTypeBuilder<Paciente> builder)
@@ -97,3 +91,5 @@ public class PacienteConfiguration : IEntityTypeConfiguration<Paciente>
             .ValueGeneratedOnAddOrUpdate();
     }
 }
+
+

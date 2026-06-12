@@ -3,26 +3,13 @@ using SePrise.Domain.Entities;
 using SePrise.Domain.Repositories;
 
 namespace SePrise.Infrastructure.Persistence.Repositories;
-
-/// <summary>
-/// Implementación concreta del repositorio de <see cref="MedicoEspecialidad"/> usando Entity Framework Core.
-/// Gestiona la relación N:N entre médicos y especialidades.
-/// </summary>
 public class MedicoEspecialidadRepository : IMedicoEspecialidadRepository
 {
     private readonly SePriseDbContext _context;
-
-    /// <summary>
-    /// Inicializa una nueva instancia de <see cref="MedicoEspecialidadRepository"/>.
-    /// </summary>
-    /// <param name="context">Contexto de base de datos de EF Core.</param>
-    /// <exception cref="ArgumentNullException">Si <paramref name="context"/> es nulo.</exception>
     public MedicoEspecialidadRepository(SePriseDbContext context)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
-
-    /// <inheritdoc/>
     public async Task<MedicoEspecialidad?> GetByIdsAsync(int idMedico, int idEspecialidad)
     {
         if (idMedico <= 0)
@@ -37,8 +24,6 @@ public class MedicoEspecialidadRepository : IMedicoEspecialidadRepository
             .Include(me => me.Especialidad)
             .FirstOrDefaultAsync(me => me.IdMedico == idMedico && me.IdEspecialidad == idEspecialidad);
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<MedicoEspecialidad>> GetByMedicoAsync(int idMedico)
     {
         if (idMedico <= 0)
@@ -51,8 +36,6 @@ public class MedicoEspecialidadRepository : IMedicoEspecialidadRepository
             .OrderBy(me => me.Especialidad.Nombre)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<MedicoEspecialidad>> GetByEspecialidadAsync(int idEspecialidad)
     {
         if (idEspecialidad <= 0)
@@ -66,8 +49,6 @@ public class MedicoEspecialidadRepository : IMedicoEspecialidadRepository
             .ThenBy(me => me.Medico.Nombre)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task AddAsync(MedicoEspecialidad medicoEspecialidad)
     {
         if (medicoEspecialidad is null)
@@ -75,8 +56,6 @@ public class MedicoEspecialidadRepository : IMedicoEspecialidadRepository
 
         await _context.MedicoEspecialidades.AddAsync(medicoEspecialidad);
     }
-
-    /// <inheritdoc/>
     public async Task RemoveAsync(int idMedico, int idEspecialidad)
     {
         if (idMedico <= 0)
@@ -93,10 +72,10 @@ public class MedicoEspecialidadRepository : IMedicoEspecialidadRepository
         if (asociacion is not null)
             _context.MedicoEspecialidades.Remove(asociacion);
     }
-
-    /// <inheritdoc/>
     public async Task SaveChangesAsync()
     {
         await _context.SaveChangesAsync();
     }
 }
+
+

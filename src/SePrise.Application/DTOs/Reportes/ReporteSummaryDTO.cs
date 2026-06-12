@@ -1,10 +1,6 @@
 namespace SePrise.Application.DTOs.Reportes;
 
 using System;
-
-/// <summary>
-/// DTO con resumen estadístico de atenciones en un período.
-/// </summary>
 public class ReporteSummaryDTO
 {
     public DateTime FechaDesde { get; set; }
@@ -15,3 +11,5 @@ public class ReporteSummaryDTO
     public int TotalPacientesUnicos { get; set; }
     public int TiempoPromedioMinutos { get; set; }
 }
+
+

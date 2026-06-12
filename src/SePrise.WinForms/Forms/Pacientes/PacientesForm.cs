@@ -29,8 +29,6 @@ public partial class PacientesForm : Form
         this.Text = "Gestión de Pacientes";
         this.Size = new Size(1000, 650);
         this.Font = new Font("Segoe UI", 10);
-
-        // ========== SEARCH PANEL ==========
         var pnlSearch = new Panel
         {
             Dock = DockStyle.Top,
@@ -94,8 +92,6 @@ public partial class PacientesForm : Form
             Font = new Font("Segoe UI", 9, FontStyle.Regular)
         };
         pnlSearch.Controls.Add(_lblTotal);
-
-        // ========== GRID ==========
         _gridPacientes = new DataGridView
         {
             Dock = DockStyle.Fill,
@@ -110,8 +106,6 @@ public partial class PacientesForm : Form
         };
         _gridPacientes.SelectionChanged += GridPacientes_SelectionChanged;
         ConfigurarGrid();
-
-        // ========== BUTTON PANEL ==========
         var pnlBotones = new Panel
         {
             Dock = DockStyle.Bottom,
@@ -159,8 +153,6 @@ public partial class PacientesForm : Form
         this.Controls.Add(pnlSearch);
 
         this.Load += PacientesForm_Load;
-
-        // ========== THEME SUPPORT ==========
         ThemeManager.ThemeChanged += (s, e) => ApplyTheme();
     }
 
@@ -306,3 +298,5 @@ public partial class PacientesForm : Form
         }
     }
 }
+
+

@@ -31,8 +31,6 @@ public partial class LoginForm : Form
         this.MaximizeBox = false;
         this.MinimizeBox = false;
         this.Font = new Font("Segoe UI", 10);
-
-        // ========== TITLE PANEL ==========
         var pnlTitle = new Panel
         {
             Dock = DockStyle.Top,
@@ -57,8 +55,6 @@ public partial class LoginForm : Form
             AutoSize = true
         };
         pnlTitle.Controls.Add(_lblSubtitulo);
-
-        // ========== FORM CONTENT ==========
         var pnlContent = new Panel
         {
             Dock = DockStyle.Fill,
@@ -132,8 +128,6 @@ public partial class LoginForm : Form
 
         this.Controls.Add(pnlContent);
         this.Controls.Add(pnlTitle);
-
-        // ========== THEME SUPPORT ==========
         ThemeManager.ThemeChanged += (s, e) => ApplyTheme();
     }
 
@@ -190,4 +184,6 @@ public partial class LoginForm : Form
         }
     }
 }
+
+
 

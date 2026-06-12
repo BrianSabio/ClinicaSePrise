@@ -545,11 +545,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj",
+      "projectUniqueName": "C:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj",
       "projectName": "SePrise.Application",
-      "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj",
+      "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\SePrise.Application.csproj",
       "packagesPath": "C:\\Users\\BSUb2\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\obj\\",
+      "outputPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -572,8 +572,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
-              "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj"
+            "C:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
+              "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj"
             }
           }
         }

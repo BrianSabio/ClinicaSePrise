@@ -1,13 +1,6 @@
 namespace SePrise.WinForms.UX;
-
-/// <summary>
-/// Aplicador de temas que configura los colores de un control basado en el tema actual.
-/// </summary>
 public static class ThemeApplier
 {
-    /// <summary>
-    /// Aplica el tema actual a un Form completo y todos sus controles
-    /// </summary>
     public static void ApplyThemeToForm(Form form)
     {
         ArgumentNullException.ThrowIfNull(form);
@@ -21,10 +14,6 @@ public static class ThemeApplier
         // Aplicar a todos los controles recursivamente
         ApplyThemeToControls(form.Controls, colors);
     }
-
-    /// <summary>
-    /// Aplica el tema a una colección de controles
-    /// </summary>
     private static void ApplyThemeToControls(Control.ControlCollection controls, ColorScheme colors)
     {
         foreach (Control control in controls)
@@ -38,10 +27,6 @@ public static class ThemeApplier
             }
         }
     }
-
-    /// <summary>
-    /// Aplica el tema a un control individual
-    /// </summary>
     private static void ApplyThemeToControl(Control control, ColorScheme colors)
     {
         switch (control)
@@ -106,10 +91,6 @@ public static class ThemeApplier
                 break;
         }
     }
-
-    /// <summary>
-    /// Crea un botón con estilo moderno aplicando el tema actual
-    /// </summary>
     public static Button CreateStyledButton(string text, Color? overrideColor = null)
     {
         var colors = ThemeManager.CurrentColorScheme;
@@ -132,10 +113,6 @@ public static class ThemeApplier
 
         return btn;
     }
-
-    /// <summary>
-    /// Crea un TextBox con estilo moderno
-    /// </summary>
     public static TextBox CreateStyledTextBox(string placeholder = "")
     {
         var colors = ThemeManager.CurrentColorScheme;
@@ -176,10 +153,6 @@ public static class ThemeApplier
 
         return txt;
     }
-
-    /// <summary>
-    /// Crea un ComboBox con estilo moderno
-    /// </summary>
     public static ComboBox CreateStyledComboBox()
     {
         var colors = ThemeManager.CurrentColorScheme;
@@ -196,3 +169,5 @@ public static class ThemeApplier
         return cmb;
     }
 }
+
+

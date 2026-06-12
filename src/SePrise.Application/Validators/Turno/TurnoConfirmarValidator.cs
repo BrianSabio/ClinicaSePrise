@@ -2,10 +2,6 @@ namespace SePrise.Application.Validators.Turno;
 
 using FluentValidation;
 using SePrise.Application.DTOs.Turno;
-
-/// <summary>
-/// Validador para confirmar un turno.
-/// </summary>
 public class TurnoConfirmarValidator : AbstractValidator<TurnoConfirmarDTO>
 {
     public TurnoConfirmarValidator()
@@ -14,3 +10,5 @@ public class TurnoConfirmarValidator : AbstractValidator<TurnoConfirmarDTO>
             .GreaterThan(0).WithMessage("IdTurno debe ser mayor a 0");
     }
 }
+
+

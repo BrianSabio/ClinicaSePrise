@@ -11,3 +11,5 @@ public class CreateTurnoRequest
     public DateTime FechaHoraInicio { get; set; }
     public int DuracionMinutos { get; set; }
 }
+
+

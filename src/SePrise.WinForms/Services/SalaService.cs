@@ -17,3 +17,5 @@ public class SalaService
         return result ?? new List<SalaDTO>();
     }
 }
+
+

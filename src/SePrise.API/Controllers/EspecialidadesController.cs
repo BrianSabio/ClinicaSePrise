@@ -4,29 +4,17 @@ using SePrise.Domain.Repositories;
 using SePrise.API.Models.Responses;
 
 namespace SePrise.API.Controllers;
-
-/// <summary>
-/// Controlador REST para la consulta del catálogo de especialidades médicas.
-/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class EspecialidadesController : ControllerBase
 {
     private readonly IEspecialidadRepository _especialidadRepository;
     private readonly IMapper _mapper;
-
-    /// <summary>
-    /// Inicializa el controller inyectando el repositorio y el mapper.
-    /// </summary>
-    public EspecialidadesController(IEspecialidadRepository especialidadRepository, IMapper mapper)
+public EspecialidadesController(IEspecialidadRepository especialidadRepository, IMapper mapper)
     {
         _especialidadRepository = especialidadRepository ?? throw new ArgumentNullException(nameof(especialidadRepository));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
-
-    /// <summary>
-    /// Retorna todas las especialidades activas en el sistema.
-    /// </summary>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<EspecialidadResponse>>> GetEspecialidades()
     {
@@ -41,10 +29,6 @@ public class EspecialidadesController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Retorna una especialidad por su ID.
-    /// </summary>
     [HttpGet("{id}")]
     public async Task<ActionResult<EspecialidadResponse>> GetEspecialidad(int id)
     {
@@ -67,3 +51,5 @@ public class EspecialidadesController : ControllerBase
         }
     }
 }
+
+

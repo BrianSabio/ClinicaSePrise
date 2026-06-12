@@ -36,8 +36,6 @@ public partial class EditarEstadoTurnoForm : Form
         this.MaximizeBox = false;
         this.MinimizeBox = false;
         this.Font = new Font("Segoe UI", 10);
-
-        // ========== TITLE ==========
         _lblTitle = new Label
         {
             Text = $"Reprogramar Turno #{_turnoOriginal.IdTurno}",
@@ -49,8 +47,6 @@ public partial class EditarEstadoTurnoForm : Form
 
         int y = 70;
         const int spacing = 65;
-
-        // ========== INFO PANEL (READ-ONLY) ==========
         var pnlInfo = new ModernPanel
         {
             Location = new Point(30, y),
@@ -96,8 +92,6 @@ public partial class EditarEstadoTurnoForm : Form
 
         this.Controls.Add(pnlInfo);
         y += 160;
-
-        // ========== NEW DATE ==========
         this.Controls.Add(new Label { Text = "📅 Nueva Fecha:", Location = new Point(30, y), AutoSize = true, Font = new Font("Segoe UI", 10) });
         _dtpFecha = new DateTimePicker
         {
@@ -110,8 +104,6 @@ public partial class EditarEstadoTurnoForm : Form
         _dtpFecha.Value = _turnoOriginal.FechaHoraInicio.Date >= DateTime.Today ? _turnoOriginal.FechaHoraInicio.Date : DateTime.Today;
         this.Controls.Add(_dtpFecha);
         y += spacing;
-
-        // ========== NEW TIME ==========
         this.Controls.Add(new Label { Text = "⏰ Nueva Hora:", Location = new Point(30, y), AutoSize = true, Font = new Font("Segoe UI", 10) });
         _dtpHora = new DateTimePicker
         {
@@ -124,8 +116,6 @@ public partial class EditarEstadoTurnoForm : Form
         _dtpHora.Value = _turnoOriginal.FechaHoraInicio;
         this.Controls.Add(_dtpHora);
         y += spacing;
-
-        // ========== DURATION ==========
         this.Controls.Add(new Label { Text = "⏱️ Duración (minutos):", Location = new Point(30, y), AutoSize = true, Font = new Font("Segoe UI", 10) });
         _numDuracion = new NumericUpDown
         {
@@ -139,8 +129,6 @@ public partial class EditarEstadoTurnoForm : Form
         };
         this.Controls.Add(_numDuracion);
         y += spacing;
-
-        // ========== ERROR LABEL ==========
         _lblError = new ErrorLabel
         {
             Location = new Point(30, y),
@@ -150,8 +138,6 @@ public partial class EditarEstadoTurnoForm : Form
         };
         this.Controls.Add(_lblError);
         y += 50;
-
-        // ========== BUTTONS ==========
         var pnlBotones = new Panel
         {
             Location = new Point(30, y),
@@ -181,8 +167,6 @@ public partial class EditarEstadoTurnoForm : Form
         pnlBotones.Controls.Add(_btnCancelar);
 
         this.Controls.Add(pnlBotones);
-
-        // ========== THEME SUPPORT ==========
         ThemeManager.ThemeChanged += (s, e) => ApplyTheme();
     }
 
@@ -249,3 +233,5 @@ public partial class EditarEstadoTurnoForm : Form
         _btnCancelar.Enabled = true;
     }
 }
+
+

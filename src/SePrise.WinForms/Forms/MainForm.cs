@@ -28,8 +28,6 @@ public partial class MainForm : Form
         // SIN IsMdiContainer — el panel Fill bloqueaba todos los subformularios
         this.Font = new Font("Segoe UI", 10);
         this.MinimumSize = new Size(900, 600);
-
-        // ========== BARRA LATERAL (SIDEBAR) ==========
         _sidebarPanel = new Panel
         {
             Dock = DockStyle.Left,
@@ -79,8 +77,6 @@ public partial class MainForm : Form
             TextAlign = ContentAlignment.MiddleLeft
         };
         _sidebarPanel.Controls.Add(lblMenuTitulo);
-
-        // ========== BOTONES DE NAVEGACIÓN ==========
         // Se agregan en orden inverso porque Dock=Top los apila de abajo hacia arriba
         // Botón Atención
         var btnAtencion = CrearBotonNavegacion("👨‍⚕️  Atención Médica", "Gestionar el flujo de atención");
@@ -120,8 +116,6 @@ public partial class MainForm : Form
         };
         btnLogout.Click += (s, e) => CerrarSesion();
         _sidebarPanel.Controls.Add(btnLogout);
-
-        // ========== BARRA DE ESTADO (INFERIOR) ==========
         var statusPanel = new Panel
         {
             Dock = DockStyle.Bottom,
@@ -177,15 +171,11 @@ public partial class MainForm : Form
             ApplyTheme();
         };
         statusPanel.Controls.Add(_btnToggleTheme);
-
-        // ========== ÁREA PRINCIPAL DE CONTENIDO ==========
         _contentPanel = new Panel
         {
             Dock = DockStyle.Fill,
             Padding = new Padding(40)
         };
-
-        // ========== HEADER PANEL ==========
         var pnlHeader = new Panel
         {
             Dock = DockStyle.Top,
@@ -246,10 +236,6 @@ public partial class MainForm : Form
 
         ThemeManager.ThemeChanged += (s, e) => ApplyTheme();
     }
-
-    /// <summary>
-    /// Crea un botón de navegación estandarizado para la barra lateral.
-    /// </summary>
     private static Button CrearBotonNavegacion(string texto, string tooltip)
     {
         var btn = new Button
@@ -267,10 +253,6 @@ public partial class MainForm : Form
         btn.AddTooltip(tooltip);
         return btn;
     }
-
-    /// <summary>
-    /// Crea una tarjeta de acceso rápido para el área central.
-    /// </summary>
     private static Panel CrearTarjetaAcceso(string titulo, string descripcion, Action onClick)
     {
         var tarjeta = new Panel
@@ -309,11 +291,6 @@ public partial class MainForm : Form
 
         return tarjeta;
     }
-
-    /// <summary>
-    /// Envuelve la apertura de un formulario en un try-catch
-    /// para mostrar errores visibles al usuario en lugar de fallar silenciosamente.
-    /// </summary>
     private void AbrirFormSeguro(Action abrirForm)
     {
         try
@@ -417,8 +394,6 @@ public partial class MainForm : Form
         }
     }
 
-    // ========== ABRE CADA MÓDULO COMO VENTANA MODAL ==========
-
     private void OpenPacientesForm()
     {
         using var form = new PacientesForm(Program.PacienteService);
@@ -451,3 +426,5 @@ public partial class MainForm : Form
         form.ShowDialog(this);
     }
 }
+
+

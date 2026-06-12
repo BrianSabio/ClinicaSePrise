@@ -4,29 +4,17 @@ using SePrise.Domain.Repositories;
 using SePrise.API.Models.Responses;
 
 namespace SePrise.API.Controllers;
-
-/// <summary>
-/// Controlador REST para la consulta del catálogo de salas y consultorios.
-/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class SalasController : ControllerBase
 {
     private readonly ISalaRepository _salaRepository;
     private readonly IMapper _mapper;
-
-    /// <summary>
-    /// Inicializa el controller inyectando el repositorio y el mapper.
-    /// </summary>
-    public SalasController(ISalaRepository salaRepository, IMapper mapper)
+public SalasController(ISalaRepository salaRepository, IMapper mapper)
     {
         _salaRepository = salaRepository ?? throw new ArgumentNullException(nameof(salaRepository));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
-
-    /// <summary>
-    /// Retorna todas las salas activas del sistema.
-    /// </summary>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<SalaResponse>>> GetSalas()
     {
@@ -41,10 +29,6 @@ public class SalasController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Retorna una sala por su ID.
-    /// </summary>
     [HttpGet("{id}")]
     public async Task<ActionResult<SalaResponse>> GetSala(int id)
     {
@@ -67,3 +51,5 @@ public class SalasController : ControllerBase
         }
     }
 }
+
+

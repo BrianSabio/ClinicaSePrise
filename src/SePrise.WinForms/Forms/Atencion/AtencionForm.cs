@@ -35,8 +35,6 @@ public partial class AtencionForm : Form
         this.Size = new Size(1100, 700);
         this.StartPosition = FormStartPosition.CenterParent;
         this.Font = new Font("Segoe UI", 10);
-
-        // ========== TITLE ==========
         _lblTitle = new Label
         {
             Text = "Gestión de Atenciones - Flujo Médico",
@@ -45,8 +43,6 @@ public partial class AtencionForm : Form
             AutoSize = true
         };
         this.Controls.Add(_lblTitle);
-
-        // ========== TOOLBAR ==========
         var lblFiltro = new Label { Text = "Filtro Estado:", Location = new Point(20, 65), AutoSize = true, Font = new Font("Segoe UI", 10, FontStyle.Bold) };
         this.Controls.Add(lblFiltro);
 
@@ -65,8 +61,6 @@ public partial class AtencionForm : Form
         _btnRefrescar.Click += BtnRefrescar_Click;
         _btnRefrescar.AddTooltip("Actualizar lista de atenciones");
         this.Controls.Add(_btnRefrescar);
-
-        // ========== GRID DE ATENCIONES ==========
         _gridAtenciones = new DataGridView
         {
             Location = new Point(20, 110),
@@ -82,8 +76,6 @@ public partial class AtencionForm : Form
         _gridAtenciones.SelectionChanged += GridAtenciones_SelectionChanged;
         _gridAtenciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         this.Controls.Add(_gridAtenciones);
-
-        // ========== PANEL DETALLES ==========
         _pnlDetalles = new ModernPanel { Location = new Point(680, 110), Size = new Size(390, 550), Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right };
 
         var lblDetalles = new Label { Text = "Detalles de Atención", Location = new Point(10, 10), Font = new Font("Segoe UI", 11, FontStyle.Bold), AutoSize = true };
@@ -95,8 +87,6 @@ public partial class AtencionForm : Form
         _pnlDetalles.Controls.Add(new Label { Text = "Notas Clínicas:", Location = new Point(10, 160), Font = new Font("Segoe UI", 10, FontStyle.Bold), AutoSize = true });
         _txtNotas = new ModernTextBox { Location = new Point(10, 185), Width = 370, Height = 100 };
         _pnlDetalles.Controls.Add(_txtNotas);
-
-        // ========== ACTION BUTTONS ==========
         _btnIniciar = new ModernButton { Text = "▶ Iniciar Atención", Location = new Point(10, 295), Width = 370, Enabled = false };
         _btnIniciar.Click += BtnIniciar_Click;
         _pnlDetalles.Controls.Add(_btnIniciar);
@@ -302,3 +292,5 @@ public partial class AtencionForm : Form
         }
     }
 }
+
+

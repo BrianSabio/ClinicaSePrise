@@ -3,16 +3,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SePrise.Domain.Aggregates;
 
 namespace SePrise.Infrastructure.Persistence.Configurations;
-
-/// <summary>
-/// Configuración de Entity Framework Core para el agregado <see cref="AtencionAggregate"/>.
-/// Define tabla, columnas, relaciones y conversión de los enums
-/// <see cref="Domain.ValueObjects.ModalidadPago"/> y <see cref="Domain.ValueObjects.EstadoAtencion"/>.
-/// <br/>
-/// <b>Nota de diseño</b>: La relación 1:0..1 con <see cref="TurnoAggregate"/> se configura en
-/// <see cref="TurnoConfiguration"/> para evitar duplicación. Aquí solo se configura
-/// <c>IdTurno</c> como nullable (demanda espontánea).
-/// </summary>
 public class AtencionConfiguration : IEntityTypeConfiguration<AtencionAggregate>
 {
     public void Configure(EntityTypeBuilder<AtencionAggregate> builder)
@@ -103,3 +93,5 @@ public class AtencionConfiguration : IEntityTypeConfiguration<AtencionAggregate>
             .HasDatabaseName("IX_Atenciones_Estado");
     }
 }
+
+

@@ -40,8 +40,6 @@ public partial class TurnosForm : Form
         this.Size = new Size(1050, 650);
         this.StartPosition = FormStartPosition.CenterParent;
         this.Font = new Font("Segoe UI", 10);
-
-        // ========== TITLE ==========
         _lblTitle = new Label
         {
             Text = "Gestión de Turnos Médicos",
@@ -50,8 +48,6 @@ public partial class TurnosForm : Form
             AutoSize = true
         };
         this.Controls.Add(_lblTitle);
-
-        // ========== TOOLBAR ==========
         var lblFiltro = new Label { Text = "Filtro Estado:", Location = new Point(20, 65), AutoSize = true, Font = new Font("Segoe UI", 10, FontStyle.Bold) };
         this.Controls.Add(lblFiltro);
 
@@ -70,8 +66,6 @@ public partial class TurnosForm : Form
         _btnRefrescar.Click += BtnRefrescar_Click;
         _btnRefrescar.AddTooltip("Actualizar lista de turnos");
         this.Controls.Add(_btnRefrescar);
-
-        // ========== GRID DE TURNOS ==========
         _gridTurnos = new DataGridView
         {
             Location = new Point(20, 110),
@@ -87,8 +81,6 @@ public partial class TurnosForm : Form
         _gridTurnos.SelectionChanged += GridTurnos_SelectionChanged;
         _gridTurnos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         this.Controls.Add(_gridTurnos);
-
-        // ========== ACTION BUTTONS ==========
         _btnNuevo = new ModernButton { Text = "➕ Nuevo Turno", Location = new Point(20, 500), Width = 140, Anchor = AnchorStyles.Bottom | AnchorStyles.Left };
         _btnNuevo.Click += BtnNuevo_Click;
         this.Controls.Add(_btnNuevo);
@@ -280,3 +272,5 @@ public partial class TurnosForm : Form
         }
     }
 }
+
+

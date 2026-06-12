@@ -2,10 +2,6 @@ namespace SePrise.Application.Validators.Atencion;
 
 using FluentValidation;
 using SePrise.Application.DTOs.Atencion;
-
-/// <summary>
-/// Validador para creación de atención de demanda espontánea.
-/// </summary>
 public class AtencionCrearEspontaneaValidator : AbstractValidator<AtencionCrearEspontaneaDTO>
 {
     public AtencionCrearEspontaneaValidator()
@@ -22,3 +18,5 @@ public class AtencionCrearEspontaneaValidator : AbstractValidator<AtencionCrearE
             .WithMessage("ModalidadPago debe ser 'ObraSocial' o 'Particular'");
     }
 }
+
+

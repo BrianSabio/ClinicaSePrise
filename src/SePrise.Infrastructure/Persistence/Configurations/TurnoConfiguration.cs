@@ -3,14 +3,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SePrise.Domain.Aggregates;
 
 namespace SePrise.Infrastructure.Persistence.Configurations;
-
-/// <summary>
-/// Configuración de Entity Framework Core para el agregado <see cref="TurnoAggregate"/>.
-/// Define tabla, columnas, relaciones con entidades y conversión del enum <see cref="Domain.ValueObjects.EstadoTurno"/>.
-/// <br/>
-/// <b>Nota de diseño</b>: La relación 1:0..1 con <see cref="AtencionAggregate"/> se configura
-/// aquí (en el lado principal) para evitar configuración duplicada o contradictoria.
-/// </summary>
 public class TurnoConfiguration : IEntityTypeConfiguration<TurnoAggregate>
 {
     public void Configure(EntityTypeBuilder<TurnoAggregate> builder)
@@ -103,3 +95,5 @@ public class TurnoConfiguration : IEntityTypeConfiguration<TurnoAggregate>
             .HasDatabaseName("IX_Turnos_Estado");
     }
 }
+
+

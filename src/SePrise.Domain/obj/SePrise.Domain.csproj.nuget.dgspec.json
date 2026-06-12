@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {}
+    "C:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {}
   },
   "projects": {
-    "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
+    "C:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj",
         "projectName": "SePrise.Domain",
-        "projectPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj",
+        "projectPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\SePrise.Domain.csproj",
         "packagesPath": "C:\\Users\\BSUb2\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\obj\\",
+        "outputPath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\src\\SePrise.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

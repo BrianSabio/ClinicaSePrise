@@ -4,11 +4,6 @@ using AutoMapper;
 using SePrise.Domain.Entities;
 using SePrise.Domain.ValueObjects;
 using SePrise.Application.DTOs.Paciente;
-
-/// <summary>
-/// Profile de AutoMapper para mapeo de Paciente.
-/// Define conversiones: Paciente ↔ PacienteDTO, PacienteCrearDTO, PacienteActualizarDTO.
-/// </summary>
 public class PacienteProfile : Profile
 {
     public PacienteProfile()
@@ -44,3 +39,5 @@ public class PacienteProfile : Profile
             .ForAllMembers(opts => opts.Condition((src, dest, srcMember) => srcMember != null));
     }
 }
+
+

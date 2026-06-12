@@ -4,11 +4,6 @@ using AutoMapper;
 using SePrise.Domain.Aggregates;
 using SePrise.Domain.ValueObjects;
 using SePrise.Application.DTOs.Atencion;
-
-/// <summary>
-/// Profile de AutoMapper para AtencionAggregate.
-/// Mapea entre Atencion (entidad) y DTOs de atención.
-/// </summary>
 public class AtencionProfile : Profile
 {
     public AtencionProfile()
@@ -52,3 +47,5 @@ public class AtencionProfile : Profile
             });
     }
 }
+
+

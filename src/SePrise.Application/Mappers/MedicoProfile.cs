@@ -3,10 +3,6 @@ namespace SePrise.Application.Mappers;
 using AutoMapper;
 using SePrise.Domain.Entities;
 using SePrise.Application.DTOs.Medico;
-
-/// <summary>
-/// Profile de AutoMapper para Medico.
-/// </summary>
 public class MedicoProfile : Profile
 {
     public MedicoProfile()
@@ -27,3 +23,5 @@ public class MedicoProfile : Profile
             );
     }
 }
+
+

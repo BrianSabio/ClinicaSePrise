@@ -4,3 +4,5 @@ public class IniciarAtencionRequest
 {
     public int IdAtencion { get; set; }
 }
+
+

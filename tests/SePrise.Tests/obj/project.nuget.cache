@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "G3PIIkkSK2I=",
+  "dgSpecHash": "Oy7CQYc/DTM=",
   "success": true,
-  "projectFilePath": "c:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\tests\\SePrise.Tests\\SePrise.Tests.csproj",
+  "projectFilePath": "C:\\Users\\BSUb2\\AndroidStudioProjects\\SePrise\\tests\\SePrise.Tests\\SePrise.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\BSUb2\\.nuget\\packages\\automapper\\16.1.1\\automapper.16.1.1.nupkg.sha512",
     "C:\\Users\\BSUb2\\.nuget\\packages\\azure.core\\1.47.1\\azure.core.1.47.1.nupkg.sha512",

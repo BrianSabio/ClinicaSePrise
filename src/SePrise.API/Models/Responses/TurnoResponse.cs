@@ -18,3 +18,5 @@ public class TurnoResponse
     public DateTime FechaCreacion { get; set; }
     public DateTime FechaUltimaModificacion { get; set; }
 }
+
+

@@ -3,11 +3,6 @@ namespace SePrise.Application.Mappers;
 using AutoMapper;
 using SePrise.Domain.Entities;
 using SePrise.Application.DTOs.Sala;
-
-/// <summary>
-/// Profile de AutoMapper para Sala.
-/// Convierte enum TipoSala entre entidad (int) y DTO (string).
-/// </summary>
 public class SalaProfile : Profile
 {
     public SalaProfile()
@@ -26,3 +21,5 @@ public class SalaProfile : Profile
             });
     }
 }
+
+

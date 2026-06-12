@@ -8,15 +8,8 @@ using SePrise.Application.Validators.Atencion;
 using SePrise.Application.DTOs.Paciente;
 using SePrise.Application.DTOs.Turno;
 using SePrise.Application.DTOs.Atencion;
-
-/// <summary>
-/// Extensión de IServiceCollection para registrar servicios de Application.
-/// </summary>
 public static class ServiceCollectionExtensions
 {
-    /// <summary>
-    /// Registra todos los validadores de FluentValidation.
-    /// </summary>
     public static IServiceCollection AddApplicationValidators(this IServiceCollection services)
     {
         services.AddScoped<IValidator<PacienteCrearDTO>, PacienteCrearValidator>();
@@ -31,3 +24,5 @@ public static class ServiceCollectionExtensions
         return services;
     }
 }
+
+

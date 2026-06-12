@@ -53,8 +53,6 @@ public partial class AcreditacionForm : Form
         this.MaximizeBox = false;
         this.MinimizeBox = false;
         this.Font = new Font("Segoe UI", 10);
-
-        // ========== TITLE ==========
         _lblTitle = new Label
         {
             Text = "Acreditación de Paciente",
@@ -65,8 +63,6 @@ public partial class AcreditacionForm : Form
         this.Controls.Add(_lblTitle);
 
         int y = 60;
-
-        // ========== RADIO BUTTONS - TIPO DE ACREDITACION ==========
         var lblTipo = new Label { Text = "Tipo de Acreditación:", Location = new Point(30, y), Font = new Font("Segoe UI", 10, FontStyle.Bold), AutoSize = true };
         this.Controls.Add(lblTipo);
         y += 35;
@@ -82,8 +78,6 @@ public partial class AcreditacionForm : Form
         this.Controls.Add(_rbEspontanea);
 
         y += 50;
-
-        // ========== PANEL POR TURNO ==========
         _pnlPorTurno = new ModernPanel { Location = new Point(30, y), Size = new Size(540, 160), AutoSize = false };
 
         var lblTurnoId = new Label { Text = "Turno:", Location = new Point(15, 20), AutoSize = true, Font = new Font("Segoe UI", 10, FontStyle.Bold) };
@@ -104,8 +98,6 @@ public partial class AcreditacionForm : Form
         _pnlPorTurno.Controls.Add(_lblTurnoInfo);
 
         this.Controls.Add(_pnlPorTurno);
-
-        // ========== PANEL ESPONTANEA ==========
         _pnlEspontanea = new ModernPanel { Location = new Point(30, y), Size = new Size(540, 220), AutoSize = false, Visible = false };
 
         var lblPaciente = new Label { Text = "Paciente:", Location = new Point(15, 20), AutoSize = true, Font = new Font("Segoe UI", 10, FontStyle.Bold) };
@@ -127,8 +119,6 @@ public partial class AcreditacionForm : Form
         this.Controls.Add(_pnlEspontanea);
 
         y += 240;
-
-        // ========== MODALIDAD PAGO ==========
         var lblModalidad = new Label { Text = "Modalidad de Pago:", Location = new Point(30, y), AutoSize = true, Font = new Font("Segoe UI", 10, FontStyle.Bold) };
         this.Controls.Add(lblModalidad);
 
@@ -139,8 +129,6 @@ public partial class AcreditacionForm : Form
         this.Controls.Add(_cmbModalidadPago);
 
         y += 70;
-
-        // ========== BUTTONS ==========
         _btnAcreditar = new ModernButton { Text = "Acreditar Paciente", Location = new Point(150, y), Width = 150 };
         _btnAcreditar.Click += BtnAcreditar_Click;
         this.Controls.Add(_btnAcreditar);
@@ -157,12 +145,8 @@ public partial class AcreditacionForm : Form
         this.Controls.Add(_btnLimpiar);
 
         y += 50;
-
-        // ========== ERROR/SUCCESS MESSAGE ==========
         _lblMensaje = new ErrorLabel { Location = new Point(30, y) };
         this.Controls.Add(_lblMensaje);
-
-        // ========== KEYBOARD SHORTCUTS ==========
         this.KeyPreview = true;
         this.KeyDown += (s, e) =>
         {
@@ -338,3 +322,5 @@ public partial class AcreditacionForm : Form
         _lblTurnoInfo.Text = "Seleccione un turno...";
     }
 }
+
+

@@ -11,11 +11,6 @@ using SePrise.Domain.Aggregates;
 using SePrise.Domain.ValueObjects;
 using SePrise.Application.DTOs.Turno;
 using SePrise.Application.Services.Interfaces;
-
-/// <summary>
-/// Servicio de aplicación para gestión de agendamiento de turnos.
-/// Orquesta repositorios y agregados para mantener coherencia de negocio.
-/// </summary>
 public class AgendamientoService : IAgendamientoService
 {
     private readonly ITurnoRepository _turnoRepository;
@@ -26,11 +21,7 @@ public class AgendamientoService : IAgendamientoService
     private readonly IMedicoEspecialidadRepository _medicoEspecialidadRepository;
     private readonly IAtencionRepository _atencionRepository;
     private readonly IMapper _mapper;
-
-    /// <summary>
-    /// Inicializa una nueva instancia de AgendamientoService.
-    /// </summary>
-    public AgendamientoService(
+public AgendamientoService(
         ITurnoRepository turnoRepository,
         IPacienteRepository pacienteRepository,
         IMedicoRepository medicoRepository,
@@ -49,60 +40,34 @@ public class AgendamientoService : IAgendamientoService
         _atencionRepository = atencionRepository ?? throw new ArgumentNullException(nameof(atencionRepository));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
-
-    /// <summary>
-    /// Obtiene un turno por su ID.
-    /// </summary>
-    public async Task<TurnoDTO> ObtenerTurnoAsync(int idTurno)
+public async Task<TurnoDTO> ObtenerTurnoAsync(int idTurno)
     {
         if (idTurno <= 0) throw new ArgumentException("ID de turno inválido");
         var turno = await _turnoRepository.GetByIdAsync(idTurno);
         if (turno == null) throw new TurnoException($"Turno con ID {idTurno} no encontrado");
         return _mapper.Map<TurnoDTO>(turno);
     }
-
-    /// <summary>
-    /// Lista los turnos de un paciente.
-    /// </summary>
     public async Task<IEnumerable<TurnoDTO>> ListarTurnosPorPacienteAsync(int idPaciente)
     {
         if (idPaciente <= 0) throw new ArgumentException("ID de paciente inválido");
         var turnos = await _turnoRepository.GetByPacienteAsync(idPaciente);
         return _mapper.Map<IEnumerable<TurnoDTO>>(turnos);
     }
-
-    /// <summary>
-    /// Lista los turnos de un médico para un día dado.
-    /// </summary>
     public async Task<IEnumerable<TurnoDTO>> ListarTurnosDelDiaPorMedicoAsync(int idMedico, DateTime fecha)
     {
         if (idMedico <= 0) throw new ArgumentException("ID de médico inválido");
         var turnos = await _turnoRepository.GetByMedicoYFechaAsync(idMedico, fecha);
         return _mapper.Map<IEnumerable<TurnoDTO>>(turnos);
     }
-
-    /// <summary>
-    /// Lista todos los turnos del sistema sin filtros aplicados.
-    /// </summary>
     public async Task<IEnumerable<TurnoDTO>> ListarTodosTurnosAsync()
     {
         var turnos = await _turnoRepository.GetAllAsync();
         return _mapper.Map<IEnumerable<TurnoDTO>>(turnos);
     }
-
-    /// <summary>
-    /// Crea un nuevo turno en estado Reservado.
-    /// </summary>
-    /// <param name="dto">Datos del turno a crear.</param>
-    /// <returns>DTO del turno creado con estado Reservado.</returns>
-    /// <exception cref="ArgumentNullException">Si dto es null.</exception>
-    /// <exception cref="TurnoException">Si alguna validación de negocio falla.</exception>
     public async Task<TurnoDTO> CrearTurnoAsync(TurnoCrearDTO dto)
     {
         if (dto == null)
             throw new ArgumentNullException(nameof(dto));
-
-        // Crear agregado desde DTO
         var turno = _mapper.Map<TurnoAggregate>(dto);
 
         // Validaciones de coherencia
@@ -117,8 +82,6 @@ public class AgendamientoService : IAgendamientoService
         var especialidad = await _especialidadRepository.GetByIdAsync(turno.IdEspecialidad);
         if (especialidad == null)
             throw new TurnoException($"Especialidad con ID {turno.IdEspecialidad} no encontrada");
-
-        // Validar que médico tenga la especialidad
         var medicoEspecs = await _medicoEspecialidadRepository.GetByMedicoAsync(turno.IdMedico);
         if (!medicoEspecs.Any(me => me.IdEspecialidad == turno.IdEspecialidad))
             throw new TurnoException($"Médico {medico.Nombre} no tiene asignada la especialidad {especialidad.Nombre}");
@@ -126,8 +89,6 @@ public class AgendamientoService : IAgendamientoService
         var sala = await _salaRepository.GetByIdAsync(turno.IdSala);
         if (sala == null)
             throw new TurnoException($"Sala con ID {turno.IdSala} no encontrada");
-
-        // Validar no solapamiento
         var turnosExistentes = await _turnoRepository.GetByMedicoYFechaAsync(turno.IdMedico, turno.FechaHoraInicio);
         var tieneOverlap = turnosExistentes.Any(t =>
             t.FechaHoraInicio <= turno.FechaHoraInicio &&
@@ -138,25 +99,12 @@ public class AgendamientoService : IAgendamientoService
         );
         if (tieneOverlap)
             throw new TurnoException($"Médico {medico.Nombre} no está disponible en ese horario");
-
-        // Persistir
         await _turnoRepository.AddAsync(turno);
         await _turnoRepository.SaveChangesAsync();
-
-        // Retornar DTO
         var idGenerado = turno.IdTurno;
         var turnoCreado = await _turnoRepository.GetByIdAsync(idGenerado);
         return _mapper.Map<TurnoDTO>(turnoCreado);
     }
-
-    /// <summary>
-    /// Confirma un turno pasándolo de Reservado a Confirmado.
-    /// NOTA: La creación de Atencion ocurre en AcreditacionService (recepción).
-    /// </summary>
-    /// <param name="idTurno">ID del turno a confirmar.</param>
-    /// <returns>DTO del turno confirmado.</returns>
-    /// <exception cref="ArgumentException">Si idTurno &lt;= 0.</exception>
-    /// <exception cref="TurnoException">Si turno no existe o no puede confirmarse.</exception>
     public async Task<TurnoDTO> ConfirmarTurnoAsync(int idTurno)
     {
         if (idTurno <= 0)
@@ -165,24 +113,12 @@ public class AgendamientoService : IAgendamientoService
         var turno = await _turnoRepository.GetByIdAsync(idTurno);
         if (turno == null)
             throw new TurnoException($"Turno con ID {idTurno} no encontrado");
-
-        // Cambiar estado
         turno.ConfirmarTurno(); // Lanza TurnoException si no puede
-
-        // Persistir
         await _turnoRepository.UpdateAsync(turno);
         await _turnoRepository.SaveChangesAsync();
 
         return _mapper.Map<TurnoDTO>(turno);
     }
-
-    /// <summary>
-    /// Cancela un turno existente.
-    /// Si existe Atencion asociada, se cancela en cascada.
-    /// </summary>
-    /// <param name="idTurno">ID del turno a cancelar.</param>
-    /// <exception cref="ArgumentException">Si idTurno &lt;= 0.</exception>
-    /// <exception cref="TurnoException">Si turno no existe o no puede cancelarse.</exception>
     public async Task CancelarTurnoAsync(int idTurno)
     {
         if (idTurno <= 0)
@@ -191,8 +127,6 @@ public class AgendamientoService : IAgendamientoService
         var turno = await _turnoRepository.GetByIdAsync(idTurno);
         if (turno == null)
             throw new TurnoException($"Turno con ID {idTurno} no encontrado");
-
-        // Cambiar estado
         turno.CancelarTurno(); // Lanza TurnoException si no puede
 
         // Cascada: cancelar atencion si existe
@@ -202,18 +136,9 @@ public class AgendamientoService : IAgendamientoService
             atencion.Cancelar();
             await _atencionRepository.UpdateAsync(atencion);
         }
-
-        // Persistir
         await _turnoRepository.UpdateAsync(turno);
         await _turnoRepository.SaveChangesAsync();
     }
-
-    /// <summary>
-    /// Reprograma un turno existente, creando uno nuevo con las nuevas fechas/duración.
-    /// </summary>
-    /// <param name="idTurno">ID del turno original.</param>
-    /// <param name="dto">Datos de la reprogramación.</param>
-    /// <returns>DTO del nuevo turno creado.</returns>
     public async Task<TurnoDTO> ReprogramarTurnoAsync(int idTurno, TurnoReprogramarDTO dto)
     {
         if (idTurno <= 0)
@@ -225,8 +150,6 @@ public class AgendamientoService : IAgendamientoService
         var turno = await _turnoRepository.GetByIdAsync(idTurno);
         if (turno == null)
             throw new TurnoException($"Turno con ID {idTurno} no encontrado");
-
-        // Cambiar estado original a Reprogramado
         turno.ReprogramarTurno(); // Lanza TurnoException si no puede
 
         // Crear NUEVO turno con la nueva fecha/hora
@@ -238,8 +161,6 @@ public class AgendamientoService : IAgendamientoService
             dto.FechaHoraInicio,
             dto.DuracionMinutos
         );
-
-        // Validar no solapamiento para el nuevo turno
         var turnosExistentes = await _turnoRepository.GetByMedicoYFechaAsync(nuevoTurno.IdMedico, nuevoTurno.FechaHoraInicio);
         var tieneOverlap = turnosExistentes.Any(t =>
             t.IdTurno != turno.IdTurno && // Excluir el turno original por las dudas, aunque está como Reprogramado
@@ -260,8 +181,6 @@ public class AgendamientoService : IAgendamientoService
             atencion.Cancelar();
             await _atencionRepository.UpdateAsync(atencion);
         }
-
-        // Persistir todo
         await _turnoRepository.UpdateAsync(turno);
         await _turnoRepository.AddAsync(nuevoTurno);
         await _turnoRepository.SaveChangesAsync();
@@ -271,3 +190,5 @@ public class AgendamientoService : IAgendamientoService
         return _mapper.Map<TurnoDTO>(turnoCreado);
     }
 }
+
+

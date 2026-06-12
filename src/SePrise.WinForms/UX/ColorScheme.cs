@@ -1,50 +1,28 @@
 namespace SePrise.WinForms.UX;
-
-/// <summary>
-/// Define los esquemas de color para los temas Light y Dark Mode.
-/// Centraliza todos los colores usados en la aplicación para consistencia.
-/// </summary>
 public class ColorScheme
 {
-    // ========== COLORES PRIMARY ==========
     public Color PrimaryColor { get; set; }
     public Color PrimaryDark { get; set; }
     public Color PrimaryLight { get; set; }
-
-    // ========== COLORES SECONDARY ==========
     public Color SecondaryColor { get; set; }
     public Color SecondaryDark { get; set; }
-
-    // ========== COLORES DE FONDO ==========
     public Color BackgroundColor { get; set; }
     public Color BackgroundAlt { get; set; }
     public Color SurfaceColor { get; set; }
-
-    // ========== COLORES DE TEXTO ==========
     public Color TextPrimary { get; set; }
     public Color TextSecondary { get; set; }
     public Color TextDisabled { get; set; }
-
-    // ========== COLORES DE ESTADO ==========
     public Color SuccessColor { get; set; }
     public Color ErrorColor { get; set; }
     public Color WarningColor { get; set; }
     public Color InfoColor { get; set; }
-
-    // ========== COLORES DE BORDE ==========
     public Color BorderColor { get; set; }
     public Color BorderLight { get; set; }
     public Color BorderDark { get; set; }
-
-    // ========== COLORES ESPECIALES ==========
     public Color HoverColor { get; set; }
     public Color FocusColor { get; set; }
     public Color DisabledColor { get; set; }
     public Color PlaceholderColor { get; set; }
-
-    /// <summary>
-    /// Crea un esquema de color Light Mode (claro)
-    /// </summary>
     public static ColorScheme CreateLightTheme()
     {
         return new ColorScheme
@@ -86,10 +64,6 @@ public class ColorScheme
             PlaceholderColor = Color.FromArgb(158, 158, 158) // #9E9E9E
         };
     }
-
-    /// <summary>
-    /// Crea un esquema de color Dark Mode (oscuro)
-    /// </summary>
     public static ColorScheme CreateDarkTheme()
     {
         return new ColorScheme
@@ -132,3 +106,5 @@ public class ColorScheme
         };
     }
 }
+
+

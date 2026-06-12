@@ -4,3 +4,5 @@ public class ConfirmTurnoRequest
 {
     public int IdTurno { get; set; }
 }
+
+

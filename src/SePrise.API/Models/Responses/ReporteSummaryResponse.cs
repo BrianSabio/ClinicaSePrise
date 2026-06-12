@@ -12,3 +12,5 @@ public class ReporteSummaryResponse
     public int TotalPacientesUnicos { get; set; }
     public int TiempoPromedioMinutos { get; set; }
 }
+
+

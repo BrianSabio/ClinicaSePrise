@@ -35,8 +35,6 @@ public partial class CrearPacienteForm : Form
         this.MaximizeBox = false;
         this.MinimizeBox = false;
         this.Font = new Font("Segoe UI", 10);
-
-        // ========== TITLE ==========
         _lblTitle = new Label
         {
             Text = "Crear Nuevo Paciente",
@@ -48,48 +46,36 @@ public partial class CrearPacienteForm : Form
 
         int y = 60;
         const int spacing = 55;
-
-        // ========== DNI ==========
         var lblDni = new Label { Text = "DNI:", Location = new Point(30, y), AutoSize = true };
         this.Controls.Add(lblDni);
         _txtDni = new ModernTextBox { Location = new Point(30, y + 25), Width = 440 };
         _txtDni.AddTooltip("Número de documento (7-9 dígitos)");
         this.Controls.Add(_txtDni);
         y += spacing;
-
-        // ========== NOMBRE ==========
         var lblNombre = new Label { Text = "Nombre:", Location = new Point(30, y), AutoSize = true };
         this.Controls.Add(lblNombre);
         _txtNombre = new ModernTextBox { Location = new Point(30, y + 25), Width = 440 };
         _txtNombre.AddTooltip("Nombre del paciente");
         this.Controls.Add(_txtNombre);
         y += spacing;
-
-        // ========== APELLIDO ==========
         var lblApellido = new Label { Text = "Apellido:", Location = new Point(30, y), AutoSize = true };
         this.Controls.Add(lblApellido);
         _txtApellido = new ModernTextBox { Location = new Point(30, y + 25), Width = 440 };
         _txtApellido.AddTooltip("Apellido del paciente");
         this.Controls.Add(_txtApellido);
         y += spacing;
-
-        // ========== EMAIL ==========
         var lblEmail = new Label { Text = "Email:", Location = new Point(30, y), AutoSize = true };
         this.Controls.Add(lblEmail);
         _txtEmail = new ModernTextBox { Location = new Point(30, y + 25), Width = 440 };
         _txtEmail.AddTooltip("Correo electrónico");
         this.Controls.Add(_txtEmail);
         y += spacing;
-
-        // ========== TELEFONO ==========
         var lblTelefono = new Label { Text = "Teléfono (Opcional):", Location = new Point(30, y), AutoSize = true };
         this.Controls.Add(lblTelefono);
         _txtTelefono = new ModernTextBox { Location = new Point(30, y + 25), Width = 440 };
         _txtTelefono.AddTooltip("Número de teléfono");
         this.Controls.Add(_txtTelefono);
         y += spacing;
-
-        // ========== FECHA NACIMIENTO ==========
         var lblFecha = new Label { Text = "Fecha de Nacimiento:", Location = new Point(30, y), AutoSize = true };
         this.Controls.Add(lblFecha);
         _dtpFechaNacimiento = new DateTimePicker
@@ -101,8 +87,6 @@ public partial class CrearPacienteForm : Form
         };
         this.Controls.Add(_dtpFechaNacimiento);
         y += spacing + 10;
-
-        // ========== BUTTONS ==========
         _btnGuardar = new ModernButton { Text = "Guardar", Location = new Point(150, y), Width = 140 };
         _btnGuardar.Click += BtnGuardar_Click;
         this.Controls.Add(_btnGuardar);
@@ -119,12 +103,8 @@ public partial class CrearPacienteForm : Form
         this.Controls.Add(_btnCancelar);
 
         y += 50;
-
-        // ========== ERROR LABEL ==========
         _lblError = new ErrorLabel { Location = new Point(30, y) };
         this.Controls.Add(_lblError);
-
-        // ========== KEYBOARD SHORTCUTS ==========
         this.KeyPreview = true;
         this.KeyDown += (s, e) =>
         {
@@ -192,3 +172,5 @@ public partial class CrearPacienteForm : Form
         }
     }
 }
+
+

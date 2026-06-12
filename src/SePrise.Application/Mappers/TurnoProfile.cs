@@ -4,11 +4,6 @@ using AutoMapper;
 using SePrise.Domain.Aggregates;
 using SePrise.Domain.ValueObjects;
 using SePrise.Application.DTOs.Turno;
-
-/// <summary>
-/// Profile de AutoMapper para TurnoAggregate.
-/// Mapea entre Turno (entidad) y DTOs de turno.
-/// </summary>
 public class TurnoProfile : Profile
 {
     public TurnoProfile()
@@ -38,3 +33,5 @@ public class TurnoProfile : Profile
             );
     }
 }
+
+

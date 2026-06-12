@@ -3,26 +3,13 @@ using SePrise.Domain.Entities;
 using SePrise.Domain.Repositories;
 
 namespace SePrise.Infrastructure.Persistence.Repositories;
-
-/// <summary>
-/// Implementación concreta del repositorio de <see cref="Medico"/> usando Entity Framework Core.
-/// Encapsula todas las operaciones de acceso a datos para médicos y sus especialidades.
-/// </summary>
 public class MedicoRepository : IMedicoRepository
 {
     private readonly SePriseDbContext _context;
-
-    /// <summary>
-    /// Inicializa una nueva instancia de <see cref="MedicoRepository"/>.
-    /// </summary>
-    /// <param name="context">Contexto de base de datos de EF Core.</param>
-    /// <exception cref="ArgumentNullException">Si <paramref name="context"/> es nulo.</exception>
     public MedicoRepository(SePriseDbContext context)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
-
-    /// <inheritdoc/>
     public async Task<Medico?> GetByIdAsync(int id)
     {
         if (id <= 0)
@@ -31,8 +18,6 @@ public class MedicoRepository : IMedicoRepository
         return await _context.Medicos
             .FirstOrDefaultAsync(m => m.IdMedico == id);
     }
-
-    /// <inheritdoc/>
     public async Task<Medico?> GetByNumeroMatriculaAsync(string numeroMatricula)
     {
         if (string.IsNullOrWhiteSpace(numeroMatricula))
@@ -42,8 +27,6 @@ public class MedicoRepository : IMedicoRepository
         return await _context.Medicos
             .FirstOrDefaultAsync(m => m.NumeroMatricula == numeroMatricula.Trim());
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<Medico>> GetAllActivosAsync()
     {
         // Solo médicos activos, ordenados apellido → nombre
@@ -53,8 +36,6 @@ public class MedicoRepository : IMedicoRepository
             .ThenBy(m => m.Nombre)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<Especialidad>> GetEspecialidadesByMedicoAsync(int idMedico)
     {
         if (idMedico <= 0)
@@ -69,8 +50,6 @@ public class MedicoRepository : IMedicoRepository
             .OrderBy(e => e.Nombre)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task<int> AddAsync(Medico medico)
     {
         if (medico is null)
@@ -79,8 +58,6 @@ public class MedicoRepository : IMedicoRepository
         await _context.Medicos.AddAsync(medico);
         return medico.IdMedico;
     }
-
-    /// <inheritdoc/>
     public Task UpdateAsync(Medico medico)
     {
         if (medico is null)
@@ -89,10 +66,10 @@ public class MedicoRepository : IMedicoRepository
         _context.Medicos.Update(medico);
         return Task.CompletedTask;
     }
-
-    /// <inheritdoc/>
     public async Task SaveChangesAsync()
     {
         await _context.SaveChangesAsync();
     }
 }
+
+

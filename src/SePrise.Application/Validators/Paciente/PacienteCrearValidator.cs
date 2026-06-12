@@ -4,11 +4,6 @@ using FluentValidation;
 using SePrise.Application.DTOs.Paciente;
 using System;
 using System.Linq;
-
-/// <summary>
-/// Validador para el DTO de creación de paciente.
-/// Asegura que los datos básicos son válidos antes de persistir.
-/// </summary>
 public class PacienteCrearValidator : AbstractValidator<PacienteCrearDTO>
 {
     public PacienteCrearValidator()
@@ -63,3 +58,5 @@ public class PacienteCrearValidator : AbstractValidator<PacienteCrearDTO>
         return clean.Length >= 7 && clean.Length <= 9 && clean.All(char.IsDigit);
     }
 }
+
+

@@ -10,30 +10,17 @@ using SePrise.Domain.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
-/// <summary>
-/// Controller para gestión de pacientes.
-/// Expone operaciones del servicio PacienteService via endpoints REST.
-/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class PacientesController : ControllerBase
 {
     private readonly IPacienteService _pacienteService;
     private readonly IMapper _mapper;
-
-    /// <summary>
-    /// Inicializa nuevo PacientesController.
-    /// </summary>
-    public PacientesController(IPacienteService pacienteService, IMapper mapper)
+public PacientesController(IPacienteService pacienteService, IMapper mapper)
     {
         _pacienteService = pacienteService ?? throw new ArgumentNullException(nameof(pacienteService));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
-
-    /// <summary>
-    /// Crea un nuevo paciente.
-    /// </summary>
     [HttpPost]
     public async Task<ActionResult<PacienteResponse>> CreatePaciente(
         [FromBody] CreatePacienteRequest request,
@@ -64,11 +51,7 @@ public class PacientesController : ControllerBase
             return StatusCode(500, new { error = ex.ToString() });
         }
     }
-
-    /// <summary>
-    /// Obtiene un paciente por ID.
-    /// </summary>
-    [HttpGet("{id}")]
+[HttpGet("{id}")]
     public async Task<ActionResult<PacienteResponse>> GetPaciente(int id)
     {
         try
@@ -90,11 +73,7 @@ public class PacientesController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Obtiene una lista de pacientes, opcionalmente filtrada por DNI.
-    /// </summary>
-    [HttpGet]
+[HttpGet]
     public async Task<ActionResult<IEnumerable<PacienteResponse>>> GetPacientes([FromQuery] string? dni)
     {
         try
@@ -129,10 +108,6 @@ public class PacientesController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Actualiza los datos de un paciente.
-    /// </summary>
     [HttpPut("{id}")]
     public async Task<ActionResult<PacienteResponse>> UpdatePaciente(
         int id, 
@@ -167,10 +142,6 @@ public class PacientesController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Desactiva (soft delete) un paciente.
-    /// </summary>
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeletePaciente(int id)
     {
@@ -193,3 +164,5 @@ public class PacientesController : ControllerBase
         }
     }
 }
+
+

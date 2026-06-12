@@ -3,10 +3,6 @@ namespace SePrise.Application.Mappers;
 using AutoMapper;
 using SePrise.Domain.Entities;
 using SePrise.Application.DTOs.Especialidad;
-
-/// <summary>
-/// Profile de AutoMapper para Especialidad.
-/// </summary>
 public class EspecialidadProfile : Profile
 {
     public EspecialidadProfile()
@@ -26,3 +22,5 @@ public class EspecialidadProfile : Profile
             );
     }
 }
+
+

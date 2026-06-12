@@ -1,8 +1,4 @@
 namespace SePrise.WinForms.UX;
-
-/// <summary>
-/// Control visual de carga/progreso global para operaciones asincrónicas.
-/// </summary>
 public class LoadingIndicator : Control
 {
     private System.Windows.Forms.Timer _animationTimer = null!;
@@ -64,10 +60,6 @@ public class LoadingIndicator : Control
         base.Dispose(disposing);
     }
 }
-
-/// <summary>
-/// Panel semi-transparente que bloquea interacción durante carga.
-/// </summary>
 public class LoadingOverlay : Panel
 {
     private Label _lblMessage = null!;
@@ -119,20 +111,12 @@ public class LoadingOverlay : Panel
         _lblMessage.Location = new Point(centerX - _lblMessage.Width / 2, centerY + 50);
     }
 }
-
-/// <summary>
-/// Gestor centralizado de indicadores de carga globales.
-/// </summary>
 public static class LoadingManager
 {
     private static LoadingOverlay? _globalOverlay;
     private static int _loadingCount = 0;
     private static readonly object _lockObject = new();
-
-    /// <summary>
-    /// Inicializa el gestor de carga para un formulario específico.
-    /// </summary>
-    public static void Initialize(Form form)
+public static void Initialize(Form form)
     {
         if (_globalOverlay == null || _globalOverlay.Parent != form)
         {
@@ -140,10 +124,6 @@ public static class LoadingManager
             form.Controls.Add(_globalOverlay);
         }
     }
-
-    /// <summary>
-    /// Muestra un indicador de carga global.
-    /// </summary>
     public static void Show(string message = "Procesando...")
     {
         lock (_lockObject)
@@ -155,10 +135,6 @@ public static class LoadingManager
             }
         }
     }
-
-    /// <summary>
-    /// Oculta el indicador de carga global (solo si no hay más operaciones pendientes).
-    /// </summary>
     public static void Hide()
     {
         lock (_lockObject)
@@ -170,10 +146,6 @@ public static class LoadingManager
             }
         }
     }
-
-    /// <summary>
-    /// Reinicia el contador (para casos de error).
-    /// </summary>
     public static void Reset()
     {
         lock (_lockObject)
@@ -183,10 +155,6 @@ public static class LoadingManager
         }
     }
 }
-
-/// <summary>
-/// Indicador de progreso en barra para operaciones largas.
-/// </summary>
 public class ProgressBar2 : Control
 {
     private int _progress = 0;
@@ -248,10 +216,6 @@ public class ProgressBar2 : Control
         }
     }
 }
-
-/// <summary>
-/// Notificación flotante que aparece en la esquina de la pantalla.
-/// </summary>
 public class ToastNotification : Form
 {
     private System.Windows.Forms.Timer _closeTimer = null!;
@@ -348,42 +312,25 @@ public class ToastNotification : Form
         base.Dispose(disposing);
     }
 }
-
-/// <summary>
-/// Extensión para mostrar notificaciones flotantes.
-/// </summary>
 public static class ToastExtensions
 {
-    /// <summary>
-    /// Muestra una notificación flotante en la esquina de la pantalla.
-    /// </summary>
     public static void ShowToast(string title, string message, NotificationType type = NotificationType.Info)
     {
         var toast = new ToastNotification(title, message, type);
         toast.ShowNotification();
     }
-
-    /// <summary>
-    /// Muestra una notificación flotante de éxito.
-    /// </summary>
     public static void ShowSuccessToast(string title, string message)
     {
         ShowToast(title, message, NotificationType.Success);
     }
-
-    /// <summary>
-    /// Muestra una notificación flotante de error.
-    /// </summary>
     public static void ShowErrorToast(string title, string message)
     {
         ShowToast(title, message, NotificationType.Error);
     }
-
-    /// <summary>
-    /// Muestra una notificación flotante de advertencia.
-    /// </summary>
     public static void ShowWarningToast(string title, string message)
     {
         ShowToast(title, message, NotificationType.Warning);
     }
 }
+
+

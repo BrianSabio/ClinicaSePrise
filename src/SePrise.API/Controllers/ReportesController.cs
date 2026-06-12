@@ -7,31 +7,18 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using SePrise.Application.Services.Interfaces;
 using SePrise.API.Models.Responses;
-
-/// <summary>
-/// Controller para reportes y análisis de atenciones.
-/// Expone consultas analíticas del servicio de reportes.
-/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class ReportesController : ControllerBase
 {
     private readonly IReportesService _reportesService;
     private readonly IMapper _mapper;
-
-    /// <summary>
-    /// Inicializa nuevo ReportesController.
-    /// </summary>
-    public ReportesController(IReportesService reportesService, IMapper mapper)
+public ReportesController(IReportesService reportesService, IMapper mapper)
     {
         _reportesService = reportesService ?? throw new ArgumentNullException(nameof(reportesService));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
-
-    /// <summary>
-    /// Obtiene atenciones finalizadas en un rango de fechas.
-    /// </summary>
-    [HttpGet("por-fecha")]
+[HttpGet("por-fecha")]
     public async Task<ActionResult<IEnumerable<AtencionResponse>>> ObtenerPorFecha(
         [FromQuery] DateTime fechaDesde,
         [FromQuery] DateTime fechaHasta)
@@ -54,11 +41,7 @@ public class ReportesController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Obtiene atenciones de un médico específico.
-    /// </summary>
-    [HttpGet("por-medico")]
+[HttpGet("por-medico")]
     public async Task<ActionResult<IEnumerable<AtencionResponse>>> ObtenerPorMedico(
         [FromQuery] int idMedico,
         [FromQuery] DateTime? fechaDesde,
@@ -83,11 +66,7 @@ public class ReportesController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Obtiene atenciones de una especialidad específica.
-    /// </summary>
-    [HttpGet("por-especialidad")]
+[HttpGet("por-especialidad")]
     public async Task<ActionResult<IEnumerable<AtencionResponse>>> ObtenerPorEspecialidad(
         [FromQuery] int idEspecialidad,
         [FromQuery] DateTime? fechaDesde,
@@ -111,11 +90,7 @@ public class ReportesController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Obtiene un resumen estadístico en un rango de fechas.
-    /// </summary>
-    [HttpGet("resumen")]
+[HttpGet("resumen")]
     public async Task<ActionResult<ReporteSummaryResponse>> ObtenerResumen(
         [FromQuery] DateTime fechaDesde,
         [FromQuery] DateTime fechaHasta)
@@ -139,3 +114,5 @@ public class ReportesController : ControllerBase
         }
     }
 }
+
+

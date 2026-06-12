@@ -7,8 +7,6 @@ public class AuthService
     private readonly ApiClient _apiClient;
     public string? UsuarioDNI { get; set; }
     public bool EstaAutenticado => !string.IsNullOrEmpty(UsuarioDNI);
-
-    // ========== DNI DE PRUEBA PARA DESARROLLO ==========
     // Cambiar este valor por el DNI que se quiera usar para testing.
     // Para deshabilitar el bypass, dejar en null o string vacío.
     private const string DNI_PRUEBA = "12345678";
@@ -48,3 +46,5 @@ public class AuthService
         UsuarioDNI = null;
     }
 }
+
+

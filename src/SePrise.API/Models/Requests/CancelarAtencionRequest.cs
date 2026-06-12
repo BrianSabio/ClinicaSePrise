@@ -4,3 +4,5 @@ public class CancelarAtencionRequest
 {
     public int IdAtencion { get; set; }
 }
+
+

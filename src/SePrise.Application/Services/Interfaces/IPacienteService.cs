@@ -3,10 +3,6 @@ namespace SePrise.Application.Services.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using SePrise.Application.DTOs.Paciente;
-
-/// <summary>
-/// Interfaz para el servicio de aplicación de gestión de pacientes.
-/// </summary>
 public interface IPacienteService
 {
     Task<PacienteDTO> CrearPacienteAsync(PacienteCrearDTO dto);
@@ -16,3 +12,5 @@ public interface IPacienteService
     Task<PacienteDTO> ActualizarPacienteAsync(int idPaciente, PacienteActualizarDTO dto);
     Task DesactivarPacienteAsync(int idPaciente);
 }
+
+

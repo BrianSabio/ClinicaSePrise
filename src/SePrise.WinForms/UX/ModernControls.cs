@@ -1,8 +1,4 @@
 namespace SePrise.WinForms.UX;
-
-/// <summary>
-/// Panel personalizado con borde y sombra para mejor presentación visual
-/// </summary>
 public class ModernPanel : Panel
 {
     private Color _borderColor;
@@ -33,10 +29,6 @@ public class ModernPanel : Panel
         }
     }
 }
-
-/// <summary>
-/// TextBox mejorado con validación visual
-/// </summary>
 public class ModernTextBox : TextBox
 {
     private Color _normalColor;
@@ -72,10 +64,6 @@ public class ModernTextBox : TextBox
         };
     }
 }
-
-/// <summary>
-/// ComboBox mejorado con búsqueda
-/// </summary>
 public class ModernComboBox : ComboBox
 {
     public ModernComboBox()
@@ -91,10 +79,6 @@ public class ModernComboBox : ComboBox
             ForeColor = e.ColorScheme.TextPrimary;
         };
     }
-
-    /// <summary>
-    /// Busca un elemento en la lista (búsqueda autocompletada)
-    /// </summary>
     public void FilterItems(string searchText)
     {
         if (string.IsNullOrEmpty(searchText))
@@ -112,10 +96,6 @@ public class ModernComboBox : ComboBox
         }
     }
 }
-
-/// <summary>
-/// Button mejorado con estados visuales
-/// </summary>
 public class ModernButton : Button
 {
     private Color _primaryColor;
@@ -162,10 +142,6 @@ public class ModernButton : Button
         FlatAppearance.BorderColor = Enabled ? _primaryColor : _disabledColor;
     }
 }
-
-/// <summary>
-/// Label mejorado para errores
-/// </summary>
 public class ErrorLabel : Label
 {
     public ErrorLabel()
@@ -182,10 +158,6 @@ public class ErrorLabel : Label
         };
     }
 }
-
-/// <summary>
-/// Label mejorado para estado/información
-/// </summary>
 public class InfoLabel : Label
 {
     private Color _infoColor;
@@ -205,10 +177,6 @@ public class InfoLabel : Label
         };
     }
 }
-
-/// <summary>
-/// Label mejorado para estados de éxito
-/// </summary>
 public class SuccessLabel : Label
 {
     private Color _successColor;
@@ -228,3 +196,5 @@ public class SuccessLabel : Label
         };
     }
 }
+
+

@@ -33,7 +33,7 @@ public class TurnosControllerTests : ControllerTestBase
         
         var randomSuffix = Guid.NewGuid().ToString().Substring(0, 4);
         var dniStr = new Random().Next(10000000, 99999999).ToString();
-        var paciente = Paciente.Crear(Dni.Crear(dniStr), "Test", "Paciente", new DateTime(1990, 1, 1), 'M');
+        var paciente = Paciente.Crear(Dni.Crear(dniStr), "Test", "Paciente", new DateTime(1990, 1, 1), 'M', "test@example.com");
         var medico = Medico.Crear($"MAT-{randomSuffix}", "Test", "Medico");
         var especialidad = Especialidad.Crear($"Especialidad-{randomSuffix}");
         var sala = Sala.Crear($"Sala-{randomSuffix}", TipoSala.Consultorio);
@@ -252,3 +252,4 @@ public class TurnosControllerTests : ControllerTestBase
         oldTurno!.Estado.Should().Be("Reprogramado");
     }
 }
+

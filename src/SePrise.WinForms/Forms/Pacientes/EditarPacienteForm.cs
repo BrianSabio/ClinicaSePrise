@@ -38,8 +38,6 @@ public partial class EditarPacienteForm : Form
         this.MaximizeBox = false;
         this.MinimizeBox = false;
         this.Font = new Font("Segoe UI", 10);
-
-        // ========== TITLE ==========
         _lblTitle = new Label
         {
             Text = $"Editar Paciente - {_pacienteOriginal.Nombre}",
@@ -51,44 +49,32 @@ public partial class EditarPacienteForm : Form
 
         int y = 70;
         const int spacing = 65;
-
-        // ========== DNI (Read-only) ==========
         this.Controls.Add(new Label { Text = "DNI:", Location = new Point(30, y), AutoSize = true, Font = new Font("Segoe UI", 10) });
         _txtDni = new ModernTextBox { Location = new Point(30, y + 25), Width = 440, Height = 35 };
         _txtDni.ReadOnly = true;
         _txtDni.Enabled = false;
         this.Controls.Add(_txtDni);
         y += spacing;
-
-        // ========== NOMBRE ==========
         this.Controls.Add(new Label { Text = "Nombre:", Location = new Point(30, y), AutoSize = true, Font = new Font("Segoe UI", 10) });
         _txtNombre = new ModernTextBox { Location = new Point(30, y + 25), Width = 440, Height = 35 };
         _txtNombre.AddTooltip("Ingrese el nombre del paciente");
         this.Controls.Add(_txtNombre);
         y += spacing;
-
-        // ========== APELLIDO ==========
         this.Controls.Add(new Label { Text = "Apellido:", Location = new Point(30, y), AutoSize = true, Font = new Font("Segoe UI", 10) });
         _txtApellido = new ModernTextBox { Location = new Point(30, y + 25), Width = 440, Height = 35 };
         _txtApellido.AddTooltip("Ingrese el apellido del paciente");
         this.Controls.Add(_txtApellido);
         y += spacing;
-
-        // ========== EMAIL ==========
         this.Controls.Add(new Label { Text = "Email:", Location = new Point(30, y), AutoSize = true, Font = new Font("Segoe UI", 10) });
         _txtEmail = new ModernTextBox { Location = new Point(30, y + 25), Width = 440, Height = 35 };
         _txtEmail.AddTooltip("Ingrese el correo electrónico");
         this.Controls.Add(_txtEmail);
         y += spacing;
-
-        // ========== TELÉFONO ==========
         this.Controls.Add(new Label { Text = "Teléfono:", Location = new Point(30, y), AutoSize = true, Font = new Font("Segoe UI", 10) });
         _txtTelefono = new ModernTextBox { Location = new Point(30, y + 25), Width = 440, Height = 35 };
         _txtTelefono.AddTooltip("Ingrese el número de teléfono");
         this.Controls.Add(_txtTelefono);
         y += spacing;
-
-        // ========== FECHA NACIMIENTO ==========
         this.Controls.Add(new Label { Text = "Fecha de Nacimiento:", Location = new Point(30, y), AutoSize = true, Font = new Font("Segoe UI", 10) });
         _dtpFechaNacimiento = new DateTimePicker 
         { 
@@ -99,8 +85,6 @@ public partial class EditarPacienteForm : Form
         };
         this.Controls.Add(_dtpFechaNacimiento);
         y += spacing;
-
-        // ========== ERROR LABEL ==========
         _lblError = new ErrorLabel
         {
             Location = new Point(30, y),
@@ -110,8 +94,6 @@ public partial class EditarPacienteForm : Form
         };
         this.Controls.Add(_lblError);
         y += 50;
-
-        // ========== BUTTONS ==========
         var pnlBotones = new Panel
         {
             Location = new Point(30, y),
@@ -141,8 +123,6 @@ public partial class EditarPacienteForm : Form
         pnlBotones.Controls.Add(_btnCancelar);
 
         this.Controls.Add(pnlBotones);
-
-        // ========== THEME SUPPORT ==========
         ThemeManager.ThemeChanged += (s, e) => ApplyTheme();
     }
 
@@ -224,3 +204,5 @@ public partial class EditarPacienteForm : Form
         _btnCancelar.Enabled = true;
     }
 }
+
+

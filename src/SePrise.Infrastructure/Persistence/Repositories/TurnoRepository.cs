@@ -4,27 +4,13 @@ using SePrise.Domain.Repositories;
 using SePrise.Domain.ValueObjects;
 
 namespace SePrise.Infrastructure.Persistence.Repositories;
-
-/// <summary>
-/// Implementación concreta del repositorio de <see cref="TurnoAggregate"/> usando Entity Framework Core.
-/// Encapsula todas las operaciones de acceso a datos para el ciclo de vida de los turnos.
-/// Incluye queries complejas para agendamiento y agenda diaria.
-/// </summary>
 public class TurnoRepository : ITurnoRepository
 {
     private readonly SePriseDbContext _context;
-
-    /// <summary>
-    /// Inicializa una nueva instancia de <see cref="TurnoRepository"/>.
-    /// </summary>
-    /// <param name="context">Contexto de base de datos de EF Core.</param>
-    /// <exception cref="ArgumentNullException">Si <paramref name="context"/> es nulo.</exception>
     public TurnoRepository(SePriseDbContext context)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
-
-    /// <inheritdoc/>
     public async Task<TurnoAggregate?> GetByIdAsync(int id)
     {
         if (id <= 0)
@@ -39,8 +25,6 @@ public class TurnoRepository : ITurnoRepository
             .Include(t => t.Atencion)
             .FirstOrDefaultAsync(t => t.IdTurno == id);
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<TurnoAggregate>> GetByPacienteAsync(int idPaciente)
     {
         if (idPaciente <= 0)
@@ -54,8 +38,6 @@ public class TurnoRepository : ITurnoRepository
             .OrderByDescending(t => t.FechaHoraInicio)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<TurnoAggregate>> GetByMedicoYFechaAsync(int idMedico, DateTime fecha)
     {
         if (idMedico <= 0)
@@ -76,8 +58,6 @@ public class TurnoRepository : ITurnoRepository
             .OrderBy(t => t.FechaHoraInicio)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<TurnoAggregate>> GetDisponiblesAsync(
         int idEspecialidad,
         DateTime fechaDesde,
@@ -101,8 +81,6 @@ public class TurnoRepository : ITurnoRepository
             .OrderBy(t => t.FechaHoraInicio)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<TurnoAggregate>> GetByEstadoAsync(EstadoTurno estado)
     {
         return await _context.Turnos
@@ -112,8 +90,6 @@ public class TurnoRepository : ITurnoRepository
             .OrderByDescending(t => t.FechaHoraInicio)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<TurnoAggregate>> GetAllAsync()
     {
         // Devuelve todos los turnos con las relaciones necesarias para mostrar en la UI
@@ -125,8 +101,6 @@ public class TurnoRepository : ITurnoRepository
             .OrderByDescending(t => t.FechaHoraInicio)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task<int> AddAsync(TurnoAggregate turno)
     {
         if (turno is null)
@@ -135,8 +109,6 @@ public class TurnoRepository : ITurnoRepository
         await _context.Turnos.AddAsync(turno);
         return turno.IdTurno;
     }
-
-    /// <inheritdoc/>
     public Task UpdateAsync(TurnoAggregate turno)
     {
         if (turno is null)
@@ -146,10 +118,10 @@ public class TurnoRepository : ITurnoRepository
         _context.Turnos.Update(turno);
         return Task.CompletedTask;
     }
-
-    /// <inheritdoc/>
     public async Task SaveChangesAsync()
     {
         await _context.SaveChangesAsync();
     }
 }
+
+

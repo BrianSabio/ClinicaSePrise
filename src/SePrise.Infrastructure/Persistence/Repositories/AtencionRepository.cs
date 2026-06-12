@@ -4,27 +4,13 @@ using SePrise.Domain.Repositories;
 using SePrise.Domain.ValueObjects;
 
 namespace SePrise.Infrastructure.Persistence.Repositories;
-
-/// <summary>
-/// Implementación concreta del repositorio de <see cref="AtencionAggregate"/> usando Entity Framework Core.
-/// Encapsula todas las operaciones de acceso a datos para el ciclo de vida de las atenciones médicas.
-/// Incluye queries para la sala de espera, historial clínico y reportes.
-/// </summary>
 public class AtencionRepository : IAtencionRepository
 {
     private readonly SePriseDbContext _context;
-
-    /// <summary>
-    /// Inicializa una nueva instancia de <see cref="AtencionRepository"/>.
-    /// </summary>
-    /// <param name="context">Contexto de base de datos de EF Core.</param>
-    /// <exception cref="ArgumentNullException">Si <paramref name="context"/> es nulo.</exception>
     public AtencionRepository(SePriseDbContext context)
     {
         _context = context ?? throw new ArgumentNullException(nameof(context));
     }
-
-    /// <inheritdoc/>
     public async Task<AtencionAggregate?> GetByIdAsync(int id)
     {
         if (id <= 0)
@@ -37,8 +23,6 @@ public class AtencionRepository : IAtencionRepository
             .Include(a => a.Medico)
             .FirstOrDefaultAsync(a => a.IdAtencion == id);
     }
-
-    /// <inheritdoc/>
     public async Task<AtencionAggregate?> GetByTurnoAsync(int idTurno)
     {
         if (idTurno <= 0)
@@ -50,8 +34,6 @@ public class AtencionRepository : IAtencionRepository
             .Include(a => a.Medico)
             .FirstOrDefaultAsync(a => a.IdTurno == idTurno);
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<AtencionAggregate>> GetByPacienteAsync(int idPaciente)
     {
         if (idPaciente <= 0)
@@ -65,8 +47,6 @@ public class AtencionRepository : IAtencionRepository
             .OrderByDescending(a => a.FechaHoraAcreditacion)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<AtencionAggregate>> GetByMedicoAsync(int idMedico)
     {
         if (idMedico <= 0)
@@ -80,8 +60,6 @@ public class AtencionRepository : IAtencionRepository
             .OrderByDescending(a => a.FechaHoraAcreditacion)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<AtencionAggregate>> GetAtendiendoAsync(int idMedico)
     {
         if (idMedico <= 0)
@@ -95,8 +73,6 @@ public class AtencionRepository : IAtencionRepository
             .OrderBy(a => a.FechaHoraAcreditacion)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<AtencionAggregate>> GetFinalizadasAsync(
         DateTime fechaDesde,
         DateTime fechaHasta)
@@ -115,8 +91,6 @@ public class AtencionRepository : IAtencionRepository
             .OrderBy(a => a.FechaHoraAcreditacion)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<AtencionAggregate>> GetByEstadoAsync(EstadoAtencion estado)
     {
         return await _context.Atenciones
@@ -128,8 +102,6 @@ public class AtencionRepository : IAtencionRepository
             .OrderByDescending(a => a.FechaHoraAcreditacion)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task<IEnumerable<AtencionAggregate>> GetAllAsync()
     {
         return await _context.Atenciones
@@ -140,8 +112,6 @@ public class AtencionRepository : IAtencionRepository
             .OrderByDescending(a => a.FechaHoraAcreditacion)
             .ToListAsync();
     }
-
-    /// <inheritdoc/>
     public async Task<int> AddAsync(AtencionAggregate atencion)
     {
         if (atencion is null)
@@ -150,8 +120,6 @@ public class AtencionRepository : IAtencionRepository
         await _context.Atenciones.AddAsync(atencion);
         return atencion.IdAtencion;
     }
-
-    /// <inheritdoc/>
     public Task UpdateAsync(AtencionAggregate atencion)
     {
         if (atencion is null)
@@ -160,10 +128,10 @@ public class AtencionRepository : IAtencionRepository
         _context.Atenciones.Update(atencion);
         return Task.CompletedTask;
     }
-
-    /// <inheritdoc/>
     public async Task SaveChangesAsync()
     {
         await _context.SaveChangesAsync();
     }
 }
+
+

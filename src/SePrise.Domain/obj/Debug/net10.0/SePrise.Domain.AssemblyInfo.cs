@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SePrise.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+084fc59bf658524bca8d371d58e78927d38a41b5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb1d2171c7283b1652b8309360b84c65ac7c1c2b")]
 [assembly: System.Reflection.AssemblyProductAttribute("SePrise.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SePrise.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

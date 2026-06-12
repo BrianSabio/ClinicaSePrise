@@ -49,8 +49,6 @@ public partial class CrearTurnoForm : Form
         this.MaximizeBox = false;
         this.MinimizeBox = false;
         this.Font = new Font("Segoe UI", 10);
-
-        // ========== TITLE ==========
         _lblTitle = new Label
         {
             Text = "Agendar Nuevo Turno Médico",
@@ -62,16 +60,12 @@ public partial class CrearTurnoForm : Form
 
         int y = 60;
         const int spacing = 60;
-
-        // ========== PACIENTE ==========
         var lblPaciente = new Label { Text = "Paciente:", Location = new Point(30, y), AutoSize = true };
         this.Controls.Add(lblPaciente);
         _cmbPaciente = new ModernComboBox { Location = new Point(30, y + 25), Width = 480 };
         _cmbPaciente.AddTooltip("Seleccione el paciente para este turno");
         this.Controls.Add(_cmbPaciente);
         y += spacing;
-
-        // ========== ESPECIALIDAD ==========
         var lblEspecialidad = new Label { Text = "Especialidad:", Location = new Point(30, y), AutoSize = true };
         this.Controls.Add(lblEspecialidad);
         _cmbEspecialidad = new ModernComboBox { Location = new Point(30, y + 25), Width = 480 };
@@ -79,8 +73,6 @@ public partial class CrearTurnoForm : Form
         _cmbEspecialidad.AddTooltip("Seleccione la especialidad médica");
         this.Controls.Add(_cmbEspecialidad);
         y += spacing;
-
-        // ========== MÉDICO ==========
         var lblMedico = new Label { Text = "Médico:", Location = new Point(30, y), AutoSize = true };
         this.Controls.Add(lblMedico);
         _cmbMedico = new ModernComboBox { Location = new Point(30, y + 25), Width = 480 };
@@ -89,16 +81,12 @@ public partial class CrearTurnoForm : Form
         _lblMedicoInfo = new InfoLabel { Location = new Point(30, y + 55), AutoSize = true, Text = "" };
         this.Controls.Add(_lblMedicoInfo);
         y += spacing + 30;
-
-        // ========== SALA ==========
         var lblSala = new Label { Text = "Sala/Consultorio:", Location = new Point(30, y), AutoSize = true };
         this.Controls.Add(lblSala);
         _cmbSala = new ModernComboBox { Location = new Point(30, y + 25), Width = 480 };
         _cmbSala.AddTooltip("Seleccione la sala o consultorio");
         this.Controls.Add(_cmbSala);
         y += spacing;
-
-        // ========== FECHA ==========
         var lblFecha = new Label { Text = "Fecha:", Location = new Point(30, y), AutoSize = true };
         this.Controls.Add(lblFecha);
         _dtpFecha = new DateTimePicker
@@ -110,8 +98,6 @@ public partial class CrearTurnoForm : Form
         };
         this.Controls.Add(_dtpFecha);
         y += spacing;
-
-        // ========== HORA ==========
         var lblHora = new Label { Text = "Hora:", Location = new Point(30, y), AutoSize = true };
         this.Controls.Add(lblHora);
         _dtpHora = new DateTimePicker
@@ -123,8 +109,6 @@ public partial class CrearTurnoForm : Form
         };
         this.Controls.Add(_dtpHora);
         y += spacing;
-
-        // ========== DURACIÓN ==========
         var lblDuracion = new Label { Text = "Duración (minutos):", Location = new Point(30, y), AutoSize = true };
         this.Controls.Add(lblDuracion);
         _numDuracion = new NumericUpDown
@@ -137,8 +121,6 @@ public partial class CrearTurnoForm : Form
         };
         this.Controls.Add(_numDuracion);
         y += spacing;
-
-        // ========== BUTTONS ==========
         _btnGuardar = new ModernButton { Text = "Agendar Turno", Location = new Point(120, y), Width = 170 };
         _btnGuardar.Click += BtnGuardar_Click;
         this.Controls.Add(_btnGuardar);
@@ -155,12 +137,8 @@ public partial class CrearTurnoForm : Form
         this.Controls.Add(_btnCancelar);
 
         y += 50;
-
-        // ========== ERROR LABEL ==========
         _lblError = new ErrorLabel { Location = new Point(30, y) };
         this.Controls.Add(_lblError);
-
-        // ========== KEYBOARD SHORTCUTS ==========
         this.KeyPreview = true;
         this.KeyDown += (s, e) =>
         {
@@ -305,3 +283,5 @@ public partial class CrearTurnoForm : Form
         }
     }
 }
+
+

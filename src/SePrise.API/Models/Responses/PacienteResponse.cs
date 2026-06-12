@@ -19,3 +19,5 @@ public class PacienteResponse
     public bool Activo { get; set; }
     public DateTime FechaRegistro { get; set; }
 }
+
+

@@ -66,3 +66,5 @@ public class ApiProfile : Profile
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.IdEspecialidad));
     }
 }
+
+

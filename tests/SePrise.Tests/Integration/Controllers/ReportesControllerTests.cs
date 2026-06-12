@@ -55,9 +55,9 @@ public class ReportesControllerTests : ControllerTestBase
         var p2Dni = new Random().Next(10000000, 99999999).ToString();
         var p3Dni = new Random().Next(10000000, 99999999).ToString();
 
-        var paciente1 = Paciente.Crear(Dni.Crear(p1Dni), "Juan", "P", new DateTime(1990, 1, 1), 'M');
-        var paciente2 = Paciente.Crear(Dni.Crear(p2Dni), "María", "P", new DateTime(1990, 1, 1), 'F');
-        var paciente3 = Paciente.Crear(Dni.Crear(p3Dni), "Pedro", "P", new DateTime(1990, 1, 1), 'M');
+        var paciente1 = Paciente.Crear(Dni.Crear(p1Dni), "Juan", "P", new DateTime(1990, 1, 1), 'M', "test@example.com");
+        var paciente2 = Paciente.Crear(Dni.Crear(p2Dni), "María", "P", new DateTime(1990, 1, 1), 'F', "test@example.com");
+        var paciente3 = Paciente.Crear(Dni.Crear(p3Dni), "Pedro", "P", new DateTime(1990, 1, 1), 'M', "test@example.com");
         dbContext.Pacientes.Add(paciente1);
         dbContext.Pacientes.Add(paciente2);
         dbContext.Pacientes.Add(paciente3);
@@ -260,3 +260,4 @@ public class ReportesControllerTests : ControllerTestBase
 
     #endregion
 }
+

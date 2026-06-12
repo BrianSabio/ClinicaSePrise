@@ -11,11 +11,6 @@ using SePrise.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
-/// <summary>
-/// Controller para gestión de atenciones médicas en consultorio.
-/// Maneja acreditación de pacientes, flujo de atención y cascadas con turnos.
-/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class AtencionsController : ControllerBase
@@ -23,11 +18,7 @@ public class AtencionsController : ControllerBase
     private readonly IAcreditacionService _acreditacionService;
     private readonly IAtencionService _atencionService;
     private readonly IMapper _mapper;
-
-    /// <summary>
-    /// Inicializa nuevo AtencionsController.
-    /// </summary>
-    public AtencionsController(
+public AtencionsController(
         IAcreditacionService acreditacionService,
         IAtencionService atencionService,
         IMapper mapper)
@@ -36,10 +27,6 @@ public class AtencionsController : ControllerBase
         _atencionService = atencionService ?? throw new ArgumentNullException(nameof(atencionService));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
-
-    /// <summary>
-    /// Acredita a un paciente que tiene un turno reservado.
-    /// </summary>
     [HttpPost("acreditar")]
     public async Task<ActionResult<AtencionResponse>> AcreditarPaciente([FromBody] AcreditarPacienteRequest request)
     {
@@ -69,10 +56,6 @@ public class AtencionsController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Crea una atención por demanda espontánea (sin turno previo).
-    /// </summary>
     [HttpPost("demanda-espontanea")]
     public async Task<ActionResult<AtencionResponse>> CrearDemandaEspontanea([FromBody] CrearDemandaEspontaneaRequest request)
     {
@@ -100,10 +83,6 @@ public class AtencionsController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Registra que un paciente no asistió a su turno reservado.
-    /// </summary>
     [HttpPost("{idTurno}/no-asistio")]
     public async Task<ActionResult> RegistrarNoAsistio(int idTurno)
     {
@@ -125,10 +104,6 @@ public class AtencionsController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Inicia una atención (el médico llama al paciente).
-    /// </summary>
     [HttpPatch("{id}/iniciar")]
     public async Task<ActionResult<AtencionResponse>> IniciarAtencion(int id, [FromBody] IniciarAtencionRequest request)
     {
@@ -154,10 +129,6 @@ public class AtencionsController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Finaliza una atención (el médico termina la consulta).
-    /// </summary>
     [HttpPatch("{id}/finalizar")]
     public async Task<ActionResult<AtencionResponse>> FinalizarAtencion(int id, [FromBody] FinalizarAtencionRequest request)
     {
@@ -183,10 +154,6 @@ public class AtencionsController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Cancela una atención acreditada o en progreso.
-    /// </summary>
     [HttpPatch("{id}/cancelar")]
     public async Task<ActionResult<AtencionResponse>> CancelarAtencion(int id, [FromBody] CancelarAtencionRequest request)
     {
@@ -212,11 +179,7 @@ public class AtencionsController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Obtiene una atención por su ID.
-    /// </summary>
-    [HttpGet("{id}")]
+[HttpGet("{id}")]
     public async Task<ActionResult<AtencionResponse>> GetAtencion(int id)
     {
         try
@@ -238,11 +201,7 @@ public class AtencionsController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Obtiene una lista de atenciones, opcionalmente filtrada por estado, paciente o médico.
-    /// </summary>
-    [HttpGet]
+[HttpGet]
     public async Task<ActionResult<IEnumerable<AtencionResponse>>> GetAtenciones(
         [FromQuery] string? estado,
         [FromQuery] int? idPaciente,
@@ -259,10 +218,6 @@ public class AtencionsController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Actualiza las notas de una atención en progreso.
-    /// </summary>
     [HttpPatch("{id}/notas")]
     public async Task<ActionResult<AtencionResponse>> ActualizarNotas(int id, [FromBody] ActualizarNotasAtencionRequest request)
     {
@@ -289,3 +244,5 @@ public class AtencionsController : ControllerBase
         }
     }
 }
+
+

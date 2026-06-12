@@ -10,33 +10,15 @@ using SePrise.Domain.ValueObjects;
 using SePrise.Application.DTOs.Atencion;
 using SePrise.Application.DTOs.Reportes;
 using SePrise.Application.Services.Interfaces;
-
-/// <summary>
-/// Servicio de aplicación para generación de reportes.
-/// Proporciona vistas analíticas de atenciones finalizadas.
-/// </summary>
 public class ReportesService : IReportesService
 {
     private readonly IAtencionRepository _atencionRepository;
     private readonly IMapper _mapper;
-
-    /// <summary>
-    /// Inicializa una nueva instancia de ReportesService.
-    /// </summary>
-    public ReportesService(IAtencionRepository atencionRepository, IMapper mapper)
+public ReportesService(IAtencionRepository atencionRepository, IMapper mapper)
     {
         _atencionRepository = atencionRepository ?? throw new ArgumentNullException(nameof(atencionRepository));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
-
-    /// <summary>
-    /// Obtiene todas las atenciones finalizadas en un rango de fechas.
-    /// Solo incluye atenciones completadas (estado Finalizada).
-    /// </summary>
-    /// <param name="fechaDesde">Fecha inicial del rango (inclusive).</param>
-    /// <param name="fechaHasta">Fecha final del rango (inclusive).</param>
-    /// <returns>Colección de DTOs de atenciones finalizadas.</returns>
-    /// <exception cref="ArgumentException">Si fechas son inválidas o inversas.</exception>
     public async Task<IEnumerable<AtencionDTO>> ObtenerAtencionesPorFechaAsync(DateTime fechaDesde, DateTime fechaHasta)
     {
         if (fechaDesde == default)
@@ -51,16 +33,6 @@ public class ReportesService : IReportesService
         var atenciones = await _atencionRepository.GetFinalizadasAsync(fechaDesde, fechaHasta);
         return _mapper.Map<IEnumerable<AtencionDTO>>(atenciones);
     }
-
-    /// <summary>
-    /// Obtiene todas las atenciones finalizadas de un médico específico.
-    /// Opcionalmente filtrado por rango de fechas.
-    /// </summary>
-    /// <param name="idMedico">ID del médico.</param>
-    /// <param name="fechaDesde">Fecha inicial (opcional).</param>
-    /// <param name="fechaHasta">Fecha final (opcional).</param>
-    /// <returns>Colección de DTOs de atenciones.</returns>
-    /// <exception cref="ArgumentException">Si parámetros son inválidos.</exception>
     public async Task<IEnumerable<AtencionDTO>> ObtenerAtencionesPorMedicoAsync(
         int idMedico, 
         DateTime? fechaDesde = null, 
@@ -86,16 +58,6 @@ public class ReportesService : IReportesService
 
         return _mapper.Map<IEnumerable<AtencionDTO>>(atencionesFinalizadas);
     }
-
-    /// <summary>
-    /// Obtiene todas las atenciones finalizadas de una especialidad específica.
-    /// Opcionalmente filtrado por rango de fechas.
-    /// </summary>
-    /// <param name="idEspecialidad">ID de la especialidad.</param>
-    /// <param name="fechaDesde">Fecha inicial (opcional).</param>
-    /// <param name="fechaHasta">Fecha final (opcional).</param>
-    /// <returns>Colección de DTOs de atenciones.</returns>
-    /// <exception cref="ArgumentException">Si parámetros son inválidos.</exception>
     public async Task<IEnumerable<AtencionDTO>> ObtenerAtencionesPorEspecialidadAsync(
         int idEspecialidad, 
         DateTime? fechaDesde = null, 
@@ -123,15 +85,6 @@ public class ReportesService : IReportesService
 
         return _mapper.Map<IEnumerable<AtencionDTO>>(atencionesEspecialidad);
     }
-
-    /// <summary>
-    /// Obtiene un resumen estadístico de atenciones finalizadas en un rango.
-    /// Incluye: total atenciones, por modalidad de pago, pacientes únicos, tiempo promedio.
-    /// </summary>
-    /// <param name="fechaDesde">Fecha inicial.</param>
-    /// <param name="fechaHasta">Fecha final.</param>
-    /// <returns>DTO con estadísticas resumidas.</returns>
-    /// <exception cref="ArgumentException">Si fechas son inválidas.</exception>
     public async Task<ReporteSummaryDTO> ObtenerResumenPorFechaAsync(DateTime fechaDesde, DateTime fechaHasta)
     {
         if (fechaDesde == default)
@@ -170,3 +123,5 @@ public class ReportesService : IReportesService
         };
     }
 }
+
+

@@ -34,3 +34,4 @@ public abstract class ControllerTestBase : IClassFixture<SePriseWebApplicationFa
         return scope.ServiceProvider.GetRequiredService<SePriseDbContext>();
     }
 }
+

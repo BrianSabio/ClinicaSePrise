@@ -6,3 +6,5 @@ public class CrearDemandaEspontaneaRequest
     public int IdMedico { get; set; }
     public string ModalidadPago { get; set; } = string.Empty;
 }
+
+

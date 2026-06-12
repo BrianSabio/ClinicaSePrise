@@ -43,7 +43,7 @@ public class AtencionsControllerTests : ControllerTestBase
         var randomSuffix = Guid.NewGuid().ToString().Substring(0, 4);
         var dniStr = new Random().Next(10000000, 99999999).ToString();
 
-        var paciente = Paciente.Crear(Dni.Crear(dniStr), "Test", "Paciente", new DateTime(1990, 1, 1), 'M');
+        var paciente = Paciente.Crear(Dni.Crear(dniStr), "Test", "Paciente", new DateTime(1990, 1, 1), 'M', "test@example.com");
         var medico = Medico.Crear($"MAT-{randomSuffix}", "Test", "Medico");
         var especialidad = Especialidad.Crear($"Especialidad-{randomSuffix}");
         var sala = Sala.Crear($"Sala-{randomSuffix}", TipoSala.Consultorio);
@@ -155,7 +155,7 @@ public class AtencionsControllerTests : ControllerTestBase
         var dniStr = new Random().Next(10000000, 99999999).ToString();
         var randomSuffix = Guid.NewGuid().ToString().Substring(0, 4);
 
-        var paciente = Paciente.Crear(Dni.Crear(dniStr), "Test", "Demanda", new DateTime(1990, 1, 1), 'M');
+        var paciente = Paciente.Crear(Dni.Crear(dniStr), "Test", "Demanda", new DateTime(1990, 1, 1), 'M', "test@example.com");
         var medico = Medico.Crear($"MAT-D{randomSuffix}", "Medico", "Demanda");
         var especialidad = Especialidad.Crear($"Especialidad-D{randomSuffix}");
         
@@ -212,7 +212,7 @@ public class AtencionsControllerTests : ControllerTestBase
         using var scope = Factory.Services.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<SePriseDbContext>();
         var dniStr = new Random().Next(10000000, 99999999).ToString();
-        var paciente = Paciente.Crear(Dni.Crear(dniStr), "Test", "Demanda2", new DateTime(1990, 1, 1), 'M');
+        var paciente = Paciente.Crear(Dni.Crear(dniStr), "Test", "Demanda2", new DateTime(1990, 1, 1), 'M', "test@example.com");
         dbContext.Pacientes.Add(paciente);
         await dbContext.SaveChangesAsync();
 
@@ -346,7 +346,7 @@ public class AtencionsControllerTests : ControllerTestBase
         var dbContext = scope.ServiceProvider.GetRequiredService<SePriseDbContext>();
         var randomSuffix = Guid.NewGuid().ToString().Substring(0, 4);
         var dniStr = new Random().Next(10000000, 99999999).ToString();
-        var paciente = Paciente.Crear(Dni.Crear(dniStr), "Test", "Demanda", new DateTime(1990, 1, 1), 'M');
+        var paciente = Paciente.Crear(Dni.Crear(dniStr), "Test", "Demanda", new DateTime(1990, 1, 1), 'M', "test@example.com");
         var medico = Medico.Crear($"MAT-D2{randomSuffix}", "Medico", "Demanda");
         var especialidad = Especialidad.Crear($"Especialidad-D2{randomSuffix}");
         dbContext.Pacientes.Add(paciente);
@@ -497,3 +497,4 @@ public class AtencionsControllerTests : ControllerTestBase
 
     #endregion
 }
+

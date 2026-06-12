@@ -4,29 +4,17 @@ using SePrise.Domain.Repositories;
 using SePrise.API.Models.Responses;
 
 namespace SePrise.API.Controllers;
-
-/// <summary>
-/// Controlador REST para la consulta del directorio de médicos activos.
-/// </summary>
 [ApiController]
 [Route("api/[controller]")]
 public class MedicosController : ControllerBase
 {
     private readonly IMedicoRepository _medicoRepository;
     private readonly IMapper _mapper;
-
-    /// <summary>
-    /// Inicializa el controller inyectando el repositorio y el mapper.
-    /// </summary>
-    public MedicosController(IMedicoRepository medicoRepository, IMapper mapper)
+public MedicosController(IMedicoRepository medicoRepository, IMapper mapper)
     {
         _medicoRepository = medicoRepository ?? throw new ArgumentNullException(nameof(medicoRepository));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
     }
-
-    /// <summary>
-    /// Retorna todos los médicos activos del sistema con sus especialidades asociadas.
-    /// </summary>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MedicoResponse>>> GetMedicos()
     {
@@ -53,10 +41,6 @@ public class MedicosController : ControllerBase
             return StatusCode(500, new { error = "Error interno del servidor" });
         }
     }
-
-    /// <summary>
-    /// Retorna un médico por su ID con sus especialidades.
-    /// </summary>
     [HttpGet("{id}")]
     public async Task<ActionResult<MedicoResponse>> GetMedico(int id)
     {
@@ -81,3 +65,5 @@ public class MedicosController : ControllerBase
         }
     }
 }
+
+

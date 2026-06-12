@@ -43,3 +43,5 @@ public class PacienteService
         await _apiClient.DeleteAsync($"/api/pacientes/{id}");
     }
 }
+
+

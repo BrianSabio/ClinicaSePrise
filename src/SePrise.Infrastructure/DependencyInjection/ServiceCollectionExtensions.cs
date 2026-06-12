@@ -6,23 +6,12 @@ using Microsoft.Extensions.DependencyInjection;
 using SePrise.Domain.Repositories;
 using SePrise.Infrastructure.Persistence;
 using SePrise.Infrastructure.Persistence.Repositories;
-
-/// <summary>
-/// Extensiones para registrar servicios de infraestructura en el contenedor de DI.
-/// </summary>
 public static class ServiceCollectionExtensions
 {
-    /// <summary>
-    /// Registra todos los servicios de infraestructura (DbContext, Repositorios).
-    /// </summary>
-    /// <param name="services">Colección de servicios.</param>
-    /// <param name="configuration">Configuración de la aplicación.</param>
-    /// <returns>IServiceCollection para encadenamiento.</returns>
     public static IServiceCollection AddInfrastructureServices(
         this IServiceCollection services,
         IConfiguration configuration)
     {
-        // Validar parámetros
         if (services == null)
             throw new ArgumentNullException(nameof(services));
         if (configuration == null)
@@ -55,3 +44,5 @@ public static class ServiceCollectionExtensions
         return services;
     }
 }
+
+

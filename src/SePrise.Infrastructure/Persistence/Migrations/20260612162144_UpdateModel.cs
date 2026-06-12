@@ -1,14 +1,12 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace SePrise.Infrastructure.Persistence.Migrations
 {
-    /// <inheritdoc />
     public partial class UpdateModel : Migration
     {
-        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<DateTime>(
@@ -151,8 +149,6 @@ namespace SePrise.Infrastructure.Persistence.Migrations
                 oldType: "datetime2",
                 oldDefaultValueSql: "GETUTCDATE()");
         }
-
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<DateTime>(
@@ -297,3 +293,5 @@ namespace SePrise.Infrastructure.Persistence.Migrations
         }
     }
 }
+
+

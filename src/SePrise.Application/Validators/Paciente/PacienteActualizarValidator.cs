@@ -2,11 +2,6 @@ namespace SePrise.Application.Validators.Paciente;
 
 using FluentValidation;
 using SePrise.Application.DTOs.Paciente;
-
-/// <summary>
-/// Validador para el DTO de actualización de paciente.
-/// Todas las reglas son opcionales (can be null).
-/// </summary>
 public class PacienteActualizarValidator : AbstractValidator<PacienteActualizarDTO>
 {
     public PacienteActualizarValidator()
@@ -32,3 +27,5 @@ public class PacienteActualizarValidator : AbstractValidator<PacienteActualizarD
             .WithMessage("Dirección no puede exceder 200 caracteres");
     }
 }
+
+

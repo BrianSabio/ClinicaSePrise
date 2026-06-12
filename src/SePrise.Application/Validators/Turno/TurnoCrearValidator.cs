@@ -3,10 +3,6 @@ namespace SePrise.Application.Validators.Turno;
 using FluentValidation;
 using SePrise.Application.DTOs.Turno;
 using System;
-
-/// <summary>
-/// Validador para el DTO de creación de turno.
-/// </summary>
 public class TurnoCrearValidator : AbstractValidator<TurnoCrearDTO>
 {
     public TurnoCrearValidator()
@@ -33,3 +29,5 @@ public class TurnoCrearValidator : AbstractValidator<TurnoCrearDTO>
             .LessThanOrEqualTo(480).WithMessage("DuracionMinutos no puede exceder 8 horas (480 minutos)");
     }
 }
+
+

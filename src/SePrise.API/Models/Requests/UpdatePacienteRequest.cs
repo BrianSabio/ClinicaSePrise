@@ -14,3 +14,5 @@ public class UpdatePacienteRequest
     public string? Provincia { get; set; }
     public string? CodigoPostal { get; set; }
 }
+
+

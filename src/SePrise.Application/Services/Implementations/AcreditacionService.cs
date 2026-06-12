@@ -9,10 +9,6 @@ using SePrise.Application.DTOs.Atencion;
 using SePrise.Application.Services.Interfaces;
 
 namespace SePrise.Application.Services.Implementations;
-
-/// <summary>
-/// Implementación del servicio de acreditación de pacientes en recepción.
-/// </summary>
 public class AcreditacionService : IAcreditacionService
 {
     private readonly ITurnoRepository _turnoRepository;
@@ -41,8 +37,6 @@ public class AcreditacionService : IAcreditacionService
 
         var turno = await _turnoRepository.GetByIdAsync(idTurno);
         if (turno == null) throw new TurnoException($"Turno con ID {idTurno} no encontrado");
-
-        // Cambiar estado del turno a Confirmado
         turno.ConfirmarTurno(); // lanza excepción si el estado no es Reservado
 
         // Crear la atención
@@ -50,8 +44,6 @@ public class AcreditacionService : IAcreditacionService
 
         await _turnoRepository.UpdateAsync(turno);
         await _atencionRepository.AddAsync(atencion);
-        
-        // El SaveChangesAsync ejecuta ambas operaciones (Update turno y Add atencion)
         // en una única transacción atómica porque ambos repositorios comparten
         // la misma instancia de SePriseDbContext (Scoped).
         await _turnoRepository.SaveChangesAsync();
@@ -102,3 +94,5 @@ public class AcreditacionService : IAcreditacionService
         await _turnoRepository.SaveChangesAsync();
     }
 }
+
+

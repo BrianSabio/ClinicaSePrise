@@ -7,3 +7,5 @@ public class CreateEspecialidadRequest
     public int DuracionMinutos { get; set; }
     public bool PermiteMultiplesTurnos { get; set; }
 }
+
+

@@ -3,11 +3,6 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SePrise.Domain.Entities;
 
 namespace SePrise.Infrastructure.Persistence.Configurations;
-
-/// <summary>
-/// Configuración de Entity Framework Core para la entidad <see cref="Especialidad"/>.
-/// Define tabla, columnas, restricciones e índices para el catálogo de especialidades médicas.
-/// </summary>
 public class EspecialidadConfiguration : IEntityTypeConfiguration<Especialidad>
 {
     public void Configure(EntityTypeBuilder<Especialidad> builder)
@@ -59,3 +54,5 @@ public class EspecialidadConfiguration : IEntityTypeConfiguration<Especialidad>
             .ValueGeneratedOnAddOrUpdate();
     }
 }
+
+

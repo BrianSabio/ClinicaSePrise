@@ -19,8 +19,6 @@ static class Program
     static void Main()
     {
         ApplicationConfiguration.Initialize();
-
-        // ========== INITIALIZE THEME & ACCESSIBILITY ==========
         // Cargar preferencias guardadas de tema y accesibilidad
         try
         {
@@ -33,8 +31,6 @@ static class Program
             ThemeManager.SetTheme(ThemeMode.Light);
             AccessibilityManager.SetAccessibilityLevel(AccessibilityLevel.Normal);
         }
-
-        // ========== INITIALIZE SERVICES ==========
         ApiClient = new ApiClient();
         AuthService = new AuthService(ApiClient);
         PacienteService = new PacienteService(ApiClient);
@@ -43,8 +39,8 @@ static class Program
         EspecialidadService = new EspecialidadService(ApiClient);
         SalaService = new SalaService(ApiClient);
         AtencionService = new AtencionService(ApiClient);
-
-        // ========== RUN APPLICATION ==========
         Application.Run(new LoginForm(AuthService));
     }
 }
+
+

@@ -6,28 +6,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using SePrise.Domain.Exceptions;
-
-/// <summary>
-/// Middleware global para manejo centralizado de excepciones.
-/// Mapea excepciones de dominio a respuestas HTTP apropiadas.
-/// </summary>
 public class ExceptionHandlingMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly ILogger<ExceptionHandlingMiddleware> _logger;
-
-    /// <summary>
-    /// Inicializa nuevo ExceptionHandlingMiddleware.
-    /// </summary>
-    public ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
+public ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
     {
         _next = next ?? throw new ArgumentNullException(nameof(next));
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
     }
-
-    /// <summary>
-    /// Invoca el middleware.
-    /// </summary>
     public async Task InvokeAsync(HttpContext context)
     {
         try
@@ -40,10 +27,6 @@ public class ExceptionHandlingMiddleware
             await HandleExceptionAsync(context, ex);
         }
     }
-
-    /// <summary>
-    /// Mapea excepciones a respuestas HTTP.
-    /// </summary>
     private static Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
         var response = context.Response;
@@ -82,3 +65,5 @@ public class ExceptionHandlingMiddleware
         return response.WriteAsJsonAsync(errorResponse);
     }
 }
+
+

@@ -2,10 +2,6 @@ namespace SePrise.Application.Validators.Atencion;
 
 using FluentValidation;
 using SePrise.Application.DTOs.Atencion;
-
-/// <summary>
-/// Validador para actualización de notas en atención.
-/// </summary>
 public class AtencionActualizarNotasValidator : AbstractValidator<AtencionActualizarNotasDTO>
 {
     public AtencionActualizarNotasValidator()
@@ -19,3 +15,5 @@ public class AtencionActualizarNotasValidator : AbstractValidator<AtencionActual
             .MaximumLength(1000).WithMessage("Notas no puede exceder 1000 caracteres");
     }
 }
+
+
