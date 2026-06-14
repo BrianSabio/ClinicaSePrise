@@ -23,6 +23,7 @@ bld/
 *.userprefs
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
+scratch/
 *.nupkg
 packages/
 .anycode/
