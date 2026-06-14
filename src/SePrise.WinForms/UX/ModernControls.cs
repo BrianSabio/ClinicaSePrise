@@ -1,8 +1,9 @@
+using System.ComponentModel;
+
 namespace SePrise.WinForms.UX;
 public class ModernPanel : Panel
 {
     private Color _borderColor;
-    private int _borderRadius = 8;
     private int _borderWidth = 1;
 
     public ModernPanel()
@@ -35,6 +36,7 @@ public class ModernTextBox : TextBox
     private Color _errorColor;
     private bool _hasError;
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool HasError
     {
         get => _hasError;

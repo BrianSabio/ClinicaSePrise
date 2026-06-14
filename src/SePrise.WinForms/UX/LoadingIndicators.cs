@@ -1,3 +1,5 @@
+using System.ComponentModel;
+
 namespace SePrise.WinForms.UX;
 public class LoadingIndicator : Control
 {
@@ -160,6 +162,7 @@ public class ProgressBar2 : Control
     private int _progress = 0;
     private string _text = "0%";
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public int Progress
     {
         get => _progress;
@@ -171,6 +174,7 @@ public class ProgressBar2 : Control
         }
     }
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string? CustomText { get; set; }
 
     public ProgressBar2()

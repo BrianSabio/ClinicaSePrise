@@ -8,15 +8,15 @@ El sistema SePrise (Circuito A) es una plataforma integral para la gestión de c
 Desarrolladores, arquitectos de software, ingenieros de QA y futuros mantenedores del sistema que necesiten comprender la base de código, la arquitectura y los conceptos de programación subyacentes.
 
 ### 1.3 Requisitos técnicos mínimos
-- **Backend/Frontend:** .NET 8.0 SDK
+- **Backend/Frontend:** .NET 10.0 SDK
 - **Base de Datos:** SQL Server (LocalDB soportado nativamente)
 - **Herramientas:** Visual Studio 2022 o IDE compatible.
 
 ### 1.4 Stack tecnológico
-- **Plataforma:** .NET 8 (C# 12)
+- **Plataforma:** .NET 10 (C# 12)
 - **API:** ASP.NET Core Web API
 - **Cliente UI:** Windows Forms (WinForms) moderno
-- **ORM:** Entity Framework Core 8
+- **ORM:** Entity Framework Core 10
 - **Mapeo y Validación:** AutoMapper, FluentValidation
 - **Testing:** xUnit, Moq, WebApplicationFactory
 
@@ -81,7 +81,7 @@ El sistema está diseñado bajo **Clean Architecture** y principios tácticos de
 La flecha de dependencia siempre apunta hacia adentro (hacia el Dominio). La Infraestructura y la API dependen de Application y Domain, pero Domain no depende de nadie.
 
 ### 3.5 Decisiones tecnológicas
-Se eligió .NET 8 por su rendimiento y soporte LTS. Clean Architecture asegura escalabilidad. EF Core permite modelado rico y migraciones seguras. WinForms se seleccionó para una adopción rápida en entornos de escritorio hospitalarios heredados.
+Se eligió .NET 10 por su rendimiento y soporte LTS extendido. Clean Architecture asegura escalabilidad. EF Core permite modelado rico y migraciones seguras. WinForms se seleccionó para una adopción rápida en entornos de escritorio hospitalarios heredados.
 
 ---
 
@@ -209,7 +209,7 @@ Se usa `FluentValidation` para inyectar reglas complejas (ej. edad mínima, rege
 ### 7.1 Propósito y responsabilidad
 Detalles de implementación técnica: base de datos, correos, archivos.
 
-### 7.2 DbContext (EF Core)
+### 7.2 DbContext (EF Core 10)
 `SePriseDbContext` utiliza configuraciones separadas (ej. `TurnoConfiguration`) implementando `IEntityTypeConfiguration<T>`.
 
 ### 7.3 Repositorios
@@ -224,8 +224,8 @@ Exponer el sistema al exterior mediante HTTP/JSON.
 ### 8.2 Controllers
 - Controladores delgados. Solo reciben la request HTTP, delegan a Application, y retornan `200 OK`, `201 Created` o errores.
 
-### 8.3 Middleware de Excepciones
-`ExceptionHandlingMiddleware` captura excepciones no manejadas y `DomainExceptions` para convertirlas en un JSON estandarizado, previniendo que fuguen stacktraces al frontend.
+- API RESTful: Construida en ASP.NET Core 10, expone endpoints HTTP consumibles. Incluye integración con Swagger para documentación automática.
+- WinForms (Cliente): Aplicación de escritorio .NET 10 (con componentes personalizados de diseño "ModernControls" para la UX) que consume la API a través de HttpClient, usando serialización System.Net.Http.Json.
 
 ---
 

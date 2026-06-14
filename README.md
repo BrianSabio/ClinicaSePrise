@@ -30,7 +30,7 @@ Esta versión se enfoca exclusivamente en el **Circuito A** (Consultorios Extern
 ### Backend API REST
 - ✅ **24 endpoints REST** fully functional
 - ✅ **Architecture**: Clean Architecture + Domain-Driven Design (DDD)
-- ✅ **Database**: SQL Server / Entity Framework Core 8
+- ✅ **Database**: SQL Server / Entity Framework Core 10
 - ✅ **Testing**: 41 integration tests (69.7% coverage)
 - ✅ **Documentation**: Swagger/OpenAPI interactivas
 - ✅ **State Machines**: Transiciones de estado estrictas para Turno y Atención
@@ -57,7 +57,7 @@ Esta versión se enfoca exclusivamente en el **Circuito A** (Consultorios Extern
 
 | Componente | Versión | Enlace |
 |-----------|---------|--------|
-| .NET SDK | 8.0+ | [descargar](https://dotnet.microsoft.com/download) |
+| .NET SDK | 10.0+ | [descargar](https://dotnet.microsoft.com/download) |
 | SQL Server | 2019+ o LocalDB | [descargar](https://www.microsoft.com/sql-server/sql-server-downloads) |
 | Visual Studio | 2022+ (opcional) | [descargar](https://visualstudio.microsoft.com/) |
 | Git | Último | [descargar](https://git-scm.com/) |
@@ -286,6 +286,6 @@ Este proyecto se distribuye de manera académica y está bajo licencia **MIT**.
 
 ---
 
-**Última actualización**: Junio 12, 2026  
+**Última actualización**: Junio 13, 2026  
 **Versión**: 1.0.0  
 **Estado**: Production Ready ✅
