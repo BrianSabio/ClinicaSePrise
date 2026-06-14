@@ -246,6 +246,35 @@ Si el paciente llama para cancelar:
 2. **Iniciar Atención**: Seleccione al paciente y haga click en "Iniciar Atención". El estado cambiará a **EnProgreso**.
 3. **Atender y Finalizar**: Una vez terminada la consulta, el médico hará click en "Finalizar Atención". Esto liberará al paciente y cerrará el ciclo completo.
 
+### 6.5 Módulo de Reportes
+
+**¿Cuándo usar?**: Para analizar estadísticas de ocupación clínica, métricas de atenciones, especialidades más demandadas y exportar datos para contabilidad o gerencia.
+
+```text
+┌──────────────────────────────────────────────────┐
+│  MÓDULO DE REPORTES                              │
+├──────────────────────────────────────────────────┤
+│  Tipo de Reporte: [ Dropdown ]                   │
+│  Desde: [ Fecha ]   Hasta: [ Fecha ]             │
+│  [🔍 Generar Reporte]                            │
+│                                                  │
+│  [ Tabla de Resultados dinámicos ]               │
+│                                                  │
+│  [📄 Exportar CSV]  [📊 Exportar Excel]         │
+└──────────────────────────────────────────────────┘
+```
+
+#### Tipos de Reportes Disponibles
+1. **Atenciones por Médico**: Muestra la cantidad total de atenciones completadas por cada médico en el período seleccionado.
+2. **Atenciones por Especialidad**: Muestra el desglose de volumen de pacientes por especialidad médica.
+3. **Turnos por Estado**: Estadísticas vitales sobre la tasa de ausentismo (NoAsistio), cancelaciones y turnos confirmados.
+4. **Ocupación de Salas**: Horas totales de uso de cada consultorio.
+
+#### Exportar Datos
+Una vez generado un reporte en pantalla, puede exportarlo usando los botones inferiores:
+- **Exportar a CSV**: Archivo de texto plano ideal para importar en otros sistemas base.
+- **Exportar a Excel**: Genera un archivo `.xlsx` nativo, con formato de tabla profesional listo para presentar a la gerencia.
+
 ---
 
 ## 7. Casos de Uso Completos

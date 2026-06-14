@@ -41,6 +41,8 @@ Esta versión se enfoca exclusivamente en el **Circuito A** (Consultorios Extern
 - ✅ Gestión Turnos (agendar, confirmar, cancelar, reprogramar)
 - ✅ Acreditación de Pacientes (recepción y derivación a sala)
 - ✅ Gestión de Atenciones (exclusivo médico/consultorio)
+- ✅ Módulo de Reportes (estadísticas de ocupación y atenciones)
+- ✅ Exportación de datos a **Excel (.xlsx)** y **CSV**
 - ✅ Responsive UI con validación visual inmediata
 - ✅ Llamadas HTTP asíncronas para evitar bloqueos de interfaz
 
@@ -186,7 +188,6 @@ SePrise/
 │   ├── DOCUMENTO_TECNICO_PROFESIONAL.md
 │   └── MANUAL_USUARIO.md
 │
-├── documento_tecnico.txt             (Resumen técnico en raíz)
 └── README.md                         (Este archivo)
 ```
 
@@ -251,12 +252,12 @@ Asegúrate de haber seleccionado una **Especialidad** primero en el formulario, 
 - [x] Módulos de Pacientes, Turnos, Acreditación y Atención
 - [x] Sembrado Automático de Base de Datos (Seeding)
 - [x] Suite de Pruebas de Integración (41 tests)
+- [x] Módulo de Reportes Avanzados y Exportación (Excel/CSV)
 
 ### 🚧 Próximas Fases (v1.1+)
 - [ ] **Autenticación JWT**: Habilitar roles de usuario para Recepción, Médico y Administrador.
 - [ ] **Circuito B (Estudios Clínicos)**: Sumar registro de insumos y derivaciones.
 - [ ] **Auditoría Histórica**: Quién cambió qué estado y a qué hora.
-- [ ] **Reportes Avanzados**: Estadísticas de ocupación con gráficos y exportación a Excel.
 
 ## 📚 Documentación Adicional
 

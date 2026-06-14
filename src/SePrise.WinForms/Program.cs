@@ -14,6 +14,7 @@ static class Program
     public static EspecialidadService EspecialidadService { get; private set; } = null!;
     public static SalaService SalaService { get; private set; } = null!;
     public static AtencionService AtencionService { get; private set; } = null!;
+    public static ReportesService ReportesService { get; private set; } = null!;
 
     [STAThread]
     static void Main()
@@ -39,6 +40,7 @@ static class Program
         EspecialidadService = new EspecialidadService(ApiClient);
         SalaService = new SalaService(ApiClient);
         AtencionService = new AtencionService(ApiClient);
+        ReportesService = new ReportesService(ApiClient);
         Application.Run(new LoginForm(AuthService));
     }
 }

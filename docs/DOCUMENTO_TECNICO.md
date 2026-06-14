@@ -18,6 +18,7 @@ Desarrolladores, arquitectos de software, ingenieros de QA y futuros mantenedore
 - **Cliente UI:** Windows Forms (WinForms) moderno
 - **ORM:** Entity Framework Core 10
 - **Mapeo y Validación:** AutoMapper, FluentValidation
+- **Exportación de Datos:** ClosedXML (Excel nativo)
 - **Testing:** xUnit, Moq, WebApplicationFactory
 
 ---
@@ -240,6 +241,7 @@ Utiliza un `ApiClient` centralizado construido sobre `HttpClient` con serializac
 Paneles modernos con arquitectura inyectada. 
 - **CrearTurnoForm**: Validaciones visuales y dropdowns dinámicos.
 - **AcreditacionForm**: Filtra los turnos que están únicamente en estado `Reservado`.
+- **GenerarReporteForm**: Consulta en tiempo real de estadísticas. Integra `ClosedXML` para exportar el `DataGridView` directamente a Excel (`.xlsx`) sin requerir Microsoft Office instalado.
 
 ---
 

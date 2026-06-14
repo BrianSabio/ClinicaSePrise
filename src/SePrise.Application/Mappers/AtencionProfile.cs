@@ -19,7 +19,9 @@ public class AtencionProfile : Profile
             .ForMember(dest => dest.MedicoNombre,
                 opt => opt.MapFrom(src => src.Medico != null ? src.Medico.Nombre + " " + src.Medico.Apellido : string.Empty))
             .ForMember(dest => dest.EspecialidadNombre,
-                opt => opt.MapFrom(src => src.Turno != null && src.Turno.Especialidad != null ? src.Turno.Especialidad.Nombre : string.Empty));
+                opt => opt.MapFrom(src => src.Turno != null && src.Turno.Especialidad != null 
+                    ? src.Turno.Especialidad.Nombre 
+                    : "Demanda Espontánea"));
 
         // AtencionCrearDTO → AtencionAggregate (creación desde turno confirmado)
         CreateMap<AtencionCrearDTO, AtencionAggregate>()

@@ -260,7 +260,7 @@ public partial class AcreditacionForm : Form
                 var req = new AcreditarPacienteRequest
                 {
                     IdTurno = (int)_cmbTurno.SelectedValue!,
-                    ModalidadPago = _cmbModalidadPago.SelectedItem?.ToString() ?? "ObraSocial"
+                    ModalidadPago = _cmbModalidadPago.SelectedItem?.ToString()?.Replace(" ", "") ?? "ObraSocial"
                 };
 
                 var atencion = await _atencionService.AcreditarPacienteAsync(req);
@@ -287,7 +287,7 @@ public partial class AcreditacionForm : Form
                 {
                     IdPaciente = (int)_cmbPaciente.SelectedValue!,
                     IdMedico = (int)_cmbMedico.SelectedValue!,
-                    ModalidadPago = _cmbModalidadPago.SelectedItem?.ToString() ?? "ObraSocial"
+                    ModalidadPago = _cmbModalidadPago.SelectedItem?.ToString()?.Replace(" ", "") ?? "ObraSocial"
                 };
 
                 var atencion = await _atencionService.CrearDemandaEspontaneaAsync(req);

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SePrise.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using SePrise.Infrastructure.Persistence;
 namespace SePrise.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(SePriseDbContext))]
-    partial class SePriseDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260614053128_FixTurnoAtencionRelation")]
+    partial class FixTurnoAtencionRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -32,7 +32,7 @@ public partial class AtencionForm : Form
     private void InitializeComponentCustom()
     {
         this.Text = "Gestión de Atenciones - Flujo Médico";
-        this.Size = new Size(1100, 700);
+        this.ClientSize = new Size(1280, 680);
         this.StartPosition = FormStartPosition.CenterParent;
         this.Font = new Font("Segoe UI", 10);
         _lblTitle = new Label
@@ -64,42 +64,54 @@ public partial class AtencionForm : Form
         _gridAtenciones = new DataGridView
         {
             Location = new Point(20, 110),
-            Size = new Size(650, 550),
+            Size = new Size(840, 550),
             SelectionMode = DataGridViewSelectionMode.FullRowSelect,
             MultiSelect = false,
             ReadOnly = true,
             AllowUserToAddRows = false,
             AllowUserToDeleteRows = false,
             BorderStyle = BorderStyle.FixedSingle,
-            Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Bottom
+            Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom,
+            AutoGenerateColumns = false
         };
-        _gridAtenciones.SelectionChanged += GridAtenciones_SelectionChanged;
-        _gridAtenciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-        this.Controls.Add(_gridAtenciones);
-        _pnlDetalles = new ModernPanel { Location = new Point(680, 110), Size = new Size(390, 550), Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right };
+        
+        _gridAtenciones.Columns.AddRange(new DataGridViewColumn[] {
+            new DataGridViewTextBoxColumn { DataPropertyName = "IdAtencion", HeaderText = "ID", Width = 50 },
+            new DataGridViewTextBoxColumn { DataPropertyName = "FechaHoraAcreditacion", HeaderText = "Fecha", Width = 120, DefaultCellStyle = new DataGridViewCellStyle { Format = "g" } },
+            new DataGridViewTextBoxColumn { DataPropertyName = "PacienteNombre", HeaderText = "Paciente", Width = 150 },
+            new DataGridViewTextBoxColumn { DataPropertyName = "MedicoNombre", HeaderText = "Médico", Width = 150 },
+            new DataGridViewTextBoxColumn { DataPropertyName = "EspecialidadNombre", HeaderText = "Especialidad", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells },
+            new DataGridViewTextBoxColumn { DataPropertyName = "ModalidadPago", HeaderText = "Modalidad", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells },
+            new DataGridViewTextBoxColumn { DataPropertyName = "Estado", HeaderText = "Estado", Width = 100 }
+        });
 
-        var lblDetalles = new Label { Text = "Detalles de Atención", Location = new Point(10, 10), Font = new Font("Segoe UI", 11, FontStyle.Bold), AutoSize = true };
+        _gridAtenciones.SelectionChanged += GridAtenciones_SelectionChanged;
+        _gridAtenciones.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        this.Controls.Add(_gridAtenciones);
+        _pnlDetalles = new ModernPanel { Location = new Point(880, 110), Size = new Size(380, 550), Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right };
+
+        var lblDetalles = new Label { Text = "Detalles de Atención", Location = new Point(15, 15), Font = new Font("Segoe UI", 11, FontStyle.Bold), AutoSize = true };
         _pnlDetalles.Controls.Add(lblDetalles);
 
-        _lblDetalleInfo = new Label { Location = new Point(10, 35), Size = new Size(370, 120), Text = "Seleccione una atención en la tabla...", AutoSize = false };
+        _lblDetalleInfo = new Label { Location = new Point(15, 45), Size = new Size(350, 100), Text = "Seleccione una atención en la tabla...", AutoSize = false };
         _pnlDetalles.Controls.Add(_lblDetalleInfo);
 
-        _pnlDetalles.Controls.Add(new Label { Text = "Notas Clínicas:", Location = new Point(10, 160), Font = new Font("Segoe UI", 10, FontStyle.Bold), AutoSize = true });
-        _txtNotas = new ModernTextBox { Location = new Point(10, 185), Width = 370, Height = 100 };
+        _pnlDetalles.Controls.Add(new Label { Text = "Notas Clínicas:", Location = new Point(15, 150), Font = new Font("Segoe UI", 10, FontStyle.Bold), AutoSize = true });
+        _txtNotas = new ModernTextBox { Location = new Point(15, 175), Width = 350, Height = 100 };
         _pnlDetalles.Controls.Add(_txtNotas);
-        _btnIniciar = new ModernButton { Text = "▶ Iniciar Atención", Location = new Point(10, 295), Width = 370, Enabled = false };
+        _btnIniciar = new ModernButton { Text = "▶ Iniciar Atención", Location = new Point(15, 290), Width = 350, Enabled = false };
         _btnIniciar.Click += BtnIniciar_Click;
         _pnlDetalles.Controls.Add(_btnIniciar);
 
-        _btnFinalizar = new ModernButton { Text = "✓ Finalizar Atención", Location = new Point(10, 345), Width = 180, Enabled = false };
+        _btnFinalizar = new ModernButton { Text = "✓ Finalizar Atención", Location = new Point(15, 340), Width = 170, Enabled = false };
         _btnFinalizar.Click += BtnFinalizar_Click;
         _pnlDetalles.Controls.Add(_btnFinalizar);
 
         _btnCancelar = new Button
         {
             Text = "✕ Cancelar",
-            Location = new Point(200, 345),
-            Width = 180,
+            Location = new Point(195, 340),
+            Width = 170,
             Height = 40,
             Enabled = false,
             FlatStyle = FlatStyle.Flat
@@ -158,7 +170,7 @@ public partial class AtencionForm : Form
     {
         if (_gridAtenciones.SelectedRows.Count > 0)
         {
-            var atencion = (AtencionDTO)_gridAtenciones.SelectedRows[0].DataBoundItem;
+            var atencion = (AtencionDTO)_gridAtenciones.SelectedRows[0].DataBoundItem!;
 
             _lblDetalleInfo.Text = $"📋 ID: {atencion.IdAtencion}\n" +
                                    $"👤 Paciente: {atencion.PacienteNombre}\n" +
@@ -201,7 +213,7 @@ public partial class AtencionForm : Form
             return;
         }
 
-        var atencion = (AtencionDTO)_gridAtenciones.SelectedRows[0].DataBoundItem;
+        var atencion = (AtencionDTO)_gridAtenciones.SelectedRows[0].DataBoundItem!;
         _btnIniciar.ShowLoading();
 
         try
@@ -228,7 +240,7 @@ public partial class AtencionForm : Form
             return;
         }
 
-        var atencion = (AtencionDTO)_gridAtenciones.SelectedRows[0].DataBoundItem;
+        var atencion = (AtencionDTO)_gridAtenciones.SelectedRows[0].DataBoundItem!;
 
         if (string.IsNullOrWhiteSpace(_txtNotas.Text))
         {
@@ -273,7 +285,7 @@ public partial class AtencionForm : Form
             return;
         }
 
-        var atencion = (AtencionDTO)_gridAtenciones.SelectedRows[0].DataBoundItem;
+        var atencion = (AtencionDTO)_gridAtenciones.SelectedRows[0].DataBoundItem!;
         _btnCancelar.Enabled = false;
 
         try

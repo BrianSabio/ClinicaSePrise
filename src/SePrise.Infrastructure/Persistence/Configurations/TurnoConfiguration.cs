@@ -67,7 +67,7 @@ public class TurnoConfiguration : IEntityTypeConfiguration<TurnoAggregate>
         // AtencionAggregate.IdTurno es la FK (lado DEPENDIENTE)
         // Si se elimina el turno, se elimina en cascada la atención asociada
         builder.HasOne(t => t.Atencion)
-            .WithOne()
+            .WithOne(a => a.Turno)
             .HasForeignKey<AtencionAggregate>(a => a.IdTurno)
             .IsRequired(false)
             .OnDelete(DeleteBehavior.Cascade);

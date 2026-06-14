@@ -76,10 +76,21 @@ public partial class TurnosForm : Form
             AllowUserToAddRows = false,
             AllowUserToDeleteRows = false,
             BorderStyle = BorderStyle.FixedSingle,
-            Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom
+            Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Bottom,
+            AutoGenerateColumns = false
         };
+
+        _gridTurnos.Columns.AddRange(new DataGridViewColumn[] {
+            new DataGridViewTextBoxColumn { DataPropertyName = "IdTurno", HeaderText = "ID", Width = 50 },
+            new DataGridViewTextBoxColumn { DataPropertyName = "FechaHoraInicio", HeaderText = "Fecha", Width = 120, DefaultCellStyle = new DataGridViewCellStyle { Format = "g" } },
+            new DataGridViewTextBoxColumn { DataPropertyName = "PacienteNombre", HeaderText = "Paciente", Width = 150 },
+            new DataGridViewTextBoxColumn { DataPropertyName = "MedicoNombre", HeaderText = "Médico", Width = 150 },
+            new DataGridViewTextBoxColumn { DataPropertyName = "EspecialidadNombre", HeaderText = "Especialidad", AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells },
+            new DataGridViewTextBoxColumn { DataPropertyName = "Estado", HeaderText = "Estado", Width = 100 }
+        });
+
         _gridTurnos.SelectionChanged += GridTurnos_SelectionChanged;
-        _gridTurnos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+        _gridTurnos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         this.Controls.Add(_gridTurnos);
         _btnNuevo = new ModernButton { Text = "➕ Nuevo Turno", Location = new Point(20, 500), Width = 140, Anchor = AnchorStyles.Bottom | AnchorStyles.Left };
         _btnNuevo.Click += BtnNuevo_Click;
@@ -156,7 +167,7 @@ public partial class TurnosForm : Form
     {
         if (_gridTurnos.SelectedRows.Count > 0)
         {
-            var turno = (TurnoDTO)_gridTurnos.SelectedRows[0].DataBoundItem;
+            var turno = (TurnoDTO)_gridTurnos.SelectedRows[0].DataBoundItem!;
             _btnConfirmar.Enabled = turno.Estado == "Reservado";
             _btnCancelar.Enabled = turno.Estado == "Reservado" || turno.Estado == "Confirmado";
             _btnReprogramar.Enabled = turno.Estado == "Reservado" || turno.Estado == "Confirmado";
@@ -197,7 +208,7 @@ public partial class TurnosForm : Form
             return;
         }
 
-        var turno = (TurnoDTO)_gridTurnos.SelectedRows[0].DataBoundItem;
+        var turno = (TurnoDTO)_gridTurnos.SelectedRows[0].DataBoundItem!;
 
         if (NotificationManager.ShowConfirm("Confirmar Turno", $"¿Confirmar turno ID {turno.IdTurno}?", this) != DialogResult.Yes)
         {
@@ -229,7 +240,7 @@ public partial class TurnosForm : Form
             return;
         }
 
-        var turno = (TurnoDTO)_gridTurnos.SelectedRows[0].DataBoundItem;
+        var turno = (TurnoDTO)_gridTurnos.SelectedRows[0].DataBoundItem!;
 
         if (NotificationManager.ShowConfirm("Cancelar Turno", $"¿Cancelar turno ID {turno.IdTurno}?", this) != DialogResult.Yes)
         {
@@ -261,7 +272,7 @@ public partial class TurnosForm : Form
             return;
         }
 
-        var turno = (TurnoDTO)_gridTurnos.SelectedRows[0].DataBoundItem;
+        var turno = (TurnoDTO)_gridTurnos.SelectedRows[0].DataBoundItem!;
 
         // Abre el formulario de crear turno (adaptado para reprogramación)
         var form = new CrearTurnoForm(_turnoService, _pacienteService, _medicoService, _especialidadService, _salaService);

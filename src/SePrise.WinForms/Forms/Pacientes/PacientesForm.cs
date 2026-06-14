@@ -265,7 +265,7 @@ public partial class PacientesForm : Form
     private async void BtnEditar_Click(object? sender, EventArgs e)
     {
         if (_gridPacientes.SelectedRows.Count == 0) return;
-        var paciente = (PacienteDTO)_gridPacientes.SelectedRows[0].DataBoundItem;
+        var paciente = (PacienteDTO)_gridPacientes.SelectedRows[0].DataBoundItem!;
         
         var form = new EditarPacienteForm(_pacienteService, paciente);
         if (form.ShowDialog() == DialogResult.OK)
@@ -277,7 +277,7 @@ public partial class PacientesForm : Form
     private async void BtnEliminar_Click(object? sender, EventArgs e)
     {
         if (_gridPacientes.SelectedRows.Count == 0) return;
-        var paciente = (PacienteDTO)_gridPacientes.SelectedRows[0].DataBoundItem;
+        var paciente = (PacienteDTO)_gridPacientes.SelectedRows[0].DataBoundItem!;
 
         var result = MessageBox.Show($"¿Está seguro de eliminar a {paciente.Nombre} {paciente.Apellido}?", 
             "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);

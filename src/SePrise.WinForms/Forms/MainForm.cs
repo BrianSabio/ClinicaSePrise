@@ -78,10 +78,16 @@ public partial class MainForm : Form
         };
         _sidebarPanel.Controls.Add(lblMenuTitulo);
         // Se agregan en orden inverso porque Dock=Top los apila de abajo hacia arriba
+        
         // Botón Atención
         var btnAtencion = CrearBotonNavegacion("👨‍⚕️  Atención Médica", "Gestionar el flujo de atención");
         btnAtencion.Click += (s, e) => AbrirFormSeguro(() => OpenAtencionForm());
         _sidebarPanel.Controls.Add(btnAtencion);
+
+        // Botón: Reportes (debe ir ANTES de Cerrar sesión en el código, pero ARRIBA en la UI)
+        var btnReportes = CrearBotonNavegacion("📊  Reportes", "Generar reportes del sistema");
+        btnReportes.Click += (s, e) => AbrirFormSeguro(() => OpenGenerarReporteForm());
+        _sidebarPanel.Controls.Add(btnReportes);
 
         // Botón Acreditación
         var btnAcreditacion = CrearBotonNavegacion("✅  Acreditación", "Acreditar pacientes en recepción");
@@ -174,7 +180,8 @@ public partial class MainForm : Form
         _contentPanel = new Panel
         {
             Dock = DockStyle.Fill,
-            Padding = new Padding(40)
+            Padding = new Padding(40),
+            AutoScroll = true
         };
         var pnlHeader = new Panel
         {
@@ -214,7 +221,8 @@ public partial class MainForm : Form
             Dock = DockStyle.Fill,
             FlowDirection = FlowDirection.LeftToRight,
             Padding = new Padding(20),
-            WrapContents = true
+            WrapContents = true,
+            AutoScroll = true
         };
 
         pnlAccesos.Controls.Add(CrearTarjetaAcceso("👥 Pacientes", "Gestionar pacientes del sistema",
@@ -225,6 +233,8 @@ public partial class MainForm : Form
             () => AbrirFormSeguro(() => OpenAcreditacionForm())));
         pnlAccesos.Controls.Add(CrearTarjetaAcceso("👨‍⚕️ Atención", "Gestionar flujo de atención médica",
             () => AbrirFormSeguro(() => OpenAtencionForm())));
+        pnlAccesos.Controls.Add(CrearTarjetaAcceso("📊 Reportes", "Generar reportes del sistema",
+            () => AbrirFormSeguro(() => OpenGenerarReporteForm())));
 
         _contentPanel.Controls.Add(pnlAccesos);
         pnlAccesos.BringToFront(); // Garantiza que pnlHeader (Top) dockee ANTES que pnlAccesos (Fill)
@@ -422,6 +432,14 @@ public partial class MainForm : Form
     private void OpenAtencionForm()
     {
         using var form = new SePrise.WinForms.Forms.Atencion.AtencionForm(Program.AtencionService);
+        form.StartPosition = FormStartPosition.CenterParent;
+        form.ShowDialog(this);
+    }
+
+    private void OpenGenerarReporteForm()
+    {
+        using var form = new SePrise.WinForms.Forms.Reportes.GenerarReporteForm(
+            Program.ReportesService, Program.MedicoService, Program.EspecialidadService);
         form.StartPosition = FormStartPosition.CenterParent;
         form.ShowDialog(this);
     }
